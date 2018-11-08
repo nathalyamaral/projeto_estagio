@@ -1,0 +1,37 @@
+cdm adm
+
+migration
+	composer require xethron/migrations-generator --dev
+	em config/app.php adicione em providers
+		// ...
+			'providers' => [
+			    /*
+			     * Package Service Providers...
+			     */
+
+			    Way\Generators\GeneratorsServiceProvider::class,
+			    Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+			],
+		// ...
+
+	em app/Providers/AppServiceProvider.php adicione register() method
+		if ($this->app->environment() !== 'production') {
+            $this->app->register(\Way\Generators\GeneratorsServiceProvider::class);
+            $this->app->register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);
+        }
+
+
+model
+	composer require reliese/laravel
+	em config/app.php adicione em providers
+		// ...
+			'providers' => [
+			    /*
+			     * Package Service Providers...
+			     */
+
+			    Reliese\Coders\CodersServiceProvider::class,
+			],
+		// ...
+	php artisan vendor:publish --tag=reliese-models
+	php artisan config:clear
