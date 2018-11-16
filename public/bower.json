@@ -1,0 +1,24 @@
+{
+  "name": "ProjetoEstagio",
+  "version": "0.0.0",
+  "homepage": "https://github.com/nathalyamaral/projeto_estagio",
+  "authors": [
+    "Nathaly do Amaral Verzas",
+    "Valdenize da Silva Ribeiro",
+    "Wesley Barbosa da Silva"
+  ],
+  "description": "Plataforma de estágio criada como trabalho final de integração entre as matérias do curso de Sistemas de Informação da UFMS-CPAN",
+  "license": "MIT",
+  "ignore": [
+    "../.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "angular-cookies": "^1.7.5",
+    "jquery": "^3.3.1"
+  }
+}
