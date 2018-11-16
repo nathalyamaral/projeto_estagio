@@ -1,0 +1,1 @@
+{"version":3,"sources":["usersApiService.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA","file":"userApi.js","sourcesContent":["angular.module(\"estagioApp\").service(\"usersApi\", function ($http, config) {\r\n    this.getArray = function () {\r\n        return $http.get(config.baseUrl + '/getArray');\r\n    };\r\n});"]}
