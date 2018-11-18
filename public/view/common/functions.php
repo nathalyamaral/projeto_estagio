@@ -36,5 +36,37 @@
 			}
 		}
 
+		function registraVaga(){
+	
+			$titulo = $_POST['titulo'];
+			$area = $_POST['area'];
+			$requisito = $_POST['requisito'];
+			$idsupervisor = $_POST['idsupervisor'];
+			$status = $_POST['status'];
+		
+
+			$sql = "INSERT INTO vagas( titulo, area, requisito, idsupervisor, status) values ('$titulo', '$area', '$requisito', '$idsupervisor', '$status')";
+
+			mysqli_query($link, $sql);
+
+			if($sql){
+				echo "
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=home.php'>
+					<script type=\"text/javascript\">
+						alert(\"Cadastro realizado com sucesso!\");
+					</script>
+					";
+			}
+			else{
+				echo "
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=form_vaga.php'>
+					<script type=\"text/javascript\">
+						alert(\"Não foi possível realizar o cadastro!\");
+					</script>
+					";
+			}
+		}
+
+
 		
 	?>
