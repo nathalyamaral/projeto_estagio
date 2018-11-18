@@ -14,8 +14,8 @@ class AddForeignKeysToCoordenadorTable extends Migration {
 	{
 		Schema::table('coordenador', function(Blueprint $table)
 		{
-			$table->foreign('Curso_Campus_nome', 'fk_Coordenador_Curso1')->references('Campus_nome')->on('curso')->onUpdate('CASCADE')->onDelete('CASCADE');
 			$table->foreign('Users_cpf', 'fk_Coordenador_Users1')->references('cpf')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('curCampnome', 'fk_coordenador_curso1')->references('Campus_nome')->on('curso')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToCoordenadorTable extends Migration {
 	{
 		Schema::table('coordenador', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_Coordenador_Curso1');
 			$table->dropForeign('fk_Coordenador_Users1');
+			$table->dropForeign('fk_coordenador_curso1');
 		});
 	}
 

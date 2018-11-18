@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 08 Nov 2018 20:50:27 +0000.
+ * Date: Fri, 09 Nov 2018 16:25:56 +0000.
  */
 
 namespace App\Models;
@@ -15,14 +15,14 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $rga
  * @property string $semestreAtual
  * @property string $Users_cpf
- * @property string $Curso_Campus_nome
- * @property string $Curso_nomeCurso
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
+ * @property string $curso_Campus_nome
+ * @property string $curso_nomeCurso
  * 
- * @property \App\Models\Curso $curso
  * @property \App\Models\User $user
+ * @property \App\Models\Curso $curso
  * @property \Illuminate\Database\Eloquent\Collection $enderecos
  * @property \Illuminate\Database\Eloquent\Collection $telefones
  * @property \Illuminate\Database\Eloquent\Collection $vagas
@@ -38,19 +38,17 @@ class Aluno extends Eloquent
 	public $incrementing = false;
 
 	protected $fillable = [
-		'semestreAtual',
-		'Curso_Campus_nome',
-		'Curso_nomeCurso'
+		'semestreAtual'
 	];
-
-	public function curso()
-	{
-		return $this->belongsTo(\App\Models\Curso::class, 'Curso_Campus_nome');
-	}
 
 	public function user()
 	{
 		return $this->belongsTo(\App\Models\User::class, 'Users_cpf');
+	}
+
+	public function curso()
+	{
+		return $this->belongsTo(\App\Models\Curso::class, 'curso_Campus_nome');
 	}
 
 	public function enderecos()

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 08 Nov 2018 20:50:28 +0000.
+ * Date: Fri, 09 Nov 2018 16:25:56 +0000.
  */
 
 namespace App\Models;
@@ -42,11 +42,11 @@ class Curso extends Eloquent
 
 	public function alunos()
 	{
-		return $this->hasMany(\App\Models\Aluno::class, 'Curso_Campus_nome');
+		return $this->hasMany(\App\Models\Aluno::class, 'curso_Campus_nome');
 	}
 
 	public function coordenadors()
 	{
-		return $this->hasMany(\App\Models\Coordenador::class, 'Curso_Campus_nome');
+		return $this->hasMany(\App\Models\Coordenador::class, 'curCampnome');
 	}
 }

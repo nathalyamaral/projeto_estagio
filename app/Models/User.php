@@ -2,13 +2,16 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 08 Nov 2018 20:50:28 +0000.
+ * Date: Fri, 09 Nov 2018 16:25:57 +0000.
  */
 
 namespace App\Models;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
 
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 /**
  * Class User
  * 
@@ -22,7 +25,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \App\Models\Acesso $acesso
  * @property \Illuminate\Database\Eloquent\Collection $alunos
  * @property \Illuminate\Database\Eloquent\Collection $configuracaos
  * @property \Illuminate\Database\Eloquent\Collection $coordenadors
@@ -31,7 +33,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App\Models
  */
-class User extends Eloquent
+class User extends Authenticatable
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	public $incrementing = false;
@@ -46,12 +48,15 @@ class User extends Eloquent
 		'email',
 		'senha'
 	];
-
-	public function acesso()
-	{
-		return $this->belongsTo(\App\Models\Acesso::class, 'acesso_idacesso');
-	}
-
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+    	
 	public function alunos()
 	{
 		return $this->hasMany(\App\Models\Aluno::class, 'Users_cpf');

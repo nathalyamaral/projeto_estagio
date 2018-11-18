@@ -14,7 +14,7 @@ class CreateEstagioTable extends Migration {
 	{
 		Schema::create('estagio', function(Blueprint $table)
 		{
-			$table->integer('idestagio');
+			$table->integer('idestagio',true);
 			$table->dateTime('data_inicio');
 			$table->dateTime('data_fim');
 			$table->enum('status', array('P','A','CA','CR'));

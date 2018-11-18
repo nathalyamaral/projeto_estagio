@@ -14,8 +14,8 @@ class AddForeignKeysToAlunoTable extends Migration {
 	{
 		Schema::table('aluno', function(Blueprint $table)
 		{
-			$table->foreign('Curso_Campus_nome', 'fk_Aluno_Curso1')->references('Campus_nome')->on('curso')->onUpdate('CASCADE')->onDelete('CASCADE');
 			$table->foreign('Users_cpf', 'fk_Aluno_Users1')->references('cpf')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->foreign('curso_Campus_nome', 'fk_aluno_curso1')->references('Campus_nome')->on('curso')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToAlunoTable extends Migration {
 	{
 		Schema::table('aluno', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_Aluno_Curso1');
 			$table->dropForeign('fk_Aluno_Users1');
+			$table->dropForeign('fk_aluno_curso1');
 		});
 	}
 

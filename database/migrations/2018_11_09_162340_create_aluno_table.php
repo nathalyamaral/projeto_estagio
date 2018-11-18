@@ -17,12 +17,12 @@ class CreateAlunoTable extends Migration {
 			$table->string('rga', 20);
 			$table->string('semestreAtual', 45);
 			$table->string('Users_cpf', 45)->index('fk_Aluno_Users1_idx');
-			$table->string('Curso_Campus_nome', 45);
-			$table->string('Curso_nomeCurso', 45);
 			$table->timestamps();
 			$table->softDeletes();
-			$table->primary(['rga','Users_cpf']);
-			$table->index(['Curso_Campus_nome','Curso_nomeCurso'], 'fk_Aluno_Curso1_idx');
+			$table->string('curso_Campus_nome', 45);
+			$table->string('curso_nomeCurso', 45);
+			$table->primary(['rga','Users_cpf','curso_Campus_nome','curso_nomeCurso']);
+			$table->index(['curso_Campus_nome','curso_nomeCurso'], 'fk_aluno_curso1_idx');
 		});
 	}
 

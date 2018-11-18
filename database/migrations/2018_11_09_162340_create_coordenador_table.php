@@ -17,12 +17,12 @@ class CreateCoordenadorTable extends Migration {
 			$table->integer('SIAPE');
 			$table->string('Cargo', 25);
 			$table->string('Users_cpf', 45)->index('fk_Coordenador_Users1_idx');
-			$table->string('Curso_Campus_nome', 45);
-			$table->string('Curso_nomeCurso', 45);
 			$table->timestamps();
 			$table->softDeletes();
-			$table->primary(['SIAPE','Users_cpf']);
-			$table->index(['Curso_Campus_nome','Curso_nomeCurso'], 'fk_Coordenador_Curso1_idx');
+			$table->string('curCampnome', 45);
+			$table->string('curNomeCur', 45);
+			$table->primary(['SIAPE','Users_cpf','curCampnome','curNomeCur']);
+			$table->index(['curCampnome','curNomeCur'], 'fk_coordenador_curso1_idx');
 		});
 	}
 

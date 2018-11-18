@@ -14,7 +14,7 @@ class CreateSupervisorTable extends Migration {
 	{
 		Schema::create('supervisor', function(Blueprint $table)
 		{
-			$table->integer('idSupervisor');
+			$table->integer('idSupervisor',true);
 			$table->integer('empresa_cnpj')->index('fk_Supervisor_empresa1_idx');
 			$table->string('Users_cpf', 45)->index('fk_Supervisor_Users1_idx');
 			$table->string('Cargo', 45);

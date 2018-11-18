@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 08 Nov 2018 20:50:28 +0000.
+ * Date: Fri, 09 Nov 2018 16:25:56 +0000.
  */
 
 namespace App\Models;
@@ -15,14 +15,14 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $SIAPE
  * @property string $Cargo
  * @property string $Users_cpf
- * @property string $Curso_Campus_nome
- * @property string $Curso_nomeCurso
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $deleted_at
+ * @property string $curCampnome
+ * @property string $curNomeCur
  * 
- * @property \App\Models\Curso $curso
  * @property \App\Models\User $user
+ * @property \App\Models\Curso $curso
  *
  * @package App\Models
  */
@@ -37,18 +37,16 @@ class Coordenador extends Eloquent
 	];
 
 	protected $fillable = [
-		'Cargo',
-		'Curso_Campus_nome',
-		'Curso_nomeCurso'
+		'Cargo'
 	];
-
-	public function curso()
-	{
-		return $this->belongsTo(\App\Models\Curso::class, 'Curso_Campus_nome');
-	}
 
 	public function user()
 	{
 		return $this->belongsTo(\App\Models\User::class, 'Users_cpf');
+	}
+
+	public function curso()
+	{
+		return $this->belongsTo(\App\Models\Curso::class, 'curCampnome');
 	}
 }

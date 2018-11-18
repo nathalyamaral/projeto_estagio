@@ -14,7 +14,7 @@ class CreateVagasTable extends Migration {
 	{
 		Schema::create('vagas', function(Blueprint $table)
 		{
-			$table->integer('idVagas');
+			$table->integer('idVagas',true);
 			$table->string('Titulo', 45);
 			$table->string('Area', 45);
 			$table->text('Requisitos_para_Vaga', 65535);
