@@ -31,3 +31,20 @@ angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$l
         }
     });
 }]);
+
+angular.module('estagioApp').controller('userController', ['$scope', 'userModel', '$cookies', '$location', function ($scope, userModel, $cookies, $location){
+
+    angular.extend($scope,{
+       doCampus: function (form_campus) {
+           var userobj = {
+               nome: $scope.campus.nome,
+               diretor: $scope.campus.diretor,
+               email: $scope.campus.emailDirecao,
+               site: $scope.campus.site
+           };
+           userModel.doLogin(userobj).then(function (succesresponse) {
+               $location.path('dashboard');
+           });
+       }
+    });
+}]);

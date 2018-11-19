@@ -1,7 +1,4 @@
-<?php
-	require_once('functions.php');
-?>
-
+<div ng-include="'view/common/navbar.html'"></div>
 	<div class="container">
 	   	<br />
 	   	<div class="col-md-2"></div>
@@ -9,19 +6,13 @@
 	   	<div class="col-md-7">
 	   		<h3 class="page-header">Cadastro Curso</h3>
 
-	   		<?php
-	   			include_once('bd.class.php');
-	   			$objBd = new bd();
-				$link = $objBd->conecta_mysql();
-	   		?>
-
-	   		<form method="post" action="form_curso.php" id="form_curso">
+	   		<form name="form_curso" ng-submit="doCurso(form_curso)">
 				<div class="form-group">
 	            	<label for="nome" class="control-label">Nome Curso <span style="color: red">*</span></label>
-					<input type="text" class="form-control" id="nome" name="nome" required="requiored">
+					<input type="text" class="form-control" id="nome" ng-model="curso.nome" name="nome" required="requiored">
 				</div>
 
-				<div class="row">
+				<!---<div class="row">
 					<div class="form-group col-md-6">
 						<label for="campus" class="control-label">Campus
 							<option value="">Selecio		ne...</option>
@@ -34,11 +25,11 @@
 							?>
 						</select>
 					</div>
-				</div>
+				</div> --->
 
 				<div class="form-group">
-					<label for="regulamento" class="control-label">Regulamento <span style="color: red">*</span></label>
-					<input type="text" class="form-control" id="regulamento" name="regulamento" required>
+					<label for="regulamento" class="control-label">Regulamento<span style="color: red">*</span></label>
+					<input type="text" class="form-control" id="regulamento" ng-model="curso.regulamento" name="regulamento" required>
 				</div>
 
 				<br />
@@ -47,9 +38,4 @@
 	    </div>
 	</div>
 
-	<?php 
-		if(isset($_POST['submit'])){
-			registraCurso();
-		}
-	?>
 
