@@ -17,10 +17,10 @@ Route::group(['prefix'=> 'api', 'middleware' => 'CheckConsistence'], function ()
     Route::get('/getVagas',  'VagasController@index');
     Route::post('/auth','UserController@CheckAuth');
     Route::resource('/Aluno', 'AlunoController');
-    Route::get('/{name}/{id?}/{variable?}', 'CrudController@show');
-    Route::post('/{name}', 'CrudController@store');
-    Route::put('/{name}/{id?}', 'CrudController@update');
-    Route::delete('/{name}/{id?}', 'CrudController@destroy');
+	Route::get('/{name}/{id?}/{variable?}', 'CrudController@show');
+	Route::post('/{name}', 'CrudController@store');
+	Route::put('/{name}/{id?}', 'CrudController@update');
+	Route::delete('/{name}/{id?}', 'CrudController@destroy');
 });
 
-Route::get('/','CrudController@index');
+Route::get('/', 'CrudController@index');

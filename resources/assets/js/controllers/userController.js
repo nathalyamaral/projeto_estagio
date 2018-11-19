@@ -1,6 +1,7 @@
 angular.module("estagioApp").controller('userController', ['$scope', 'userModel', '$cookies', '$location', function ($scope, userModel, $cookies, $location){
     angular.extend($scope,{
        doLogin: function (loginForm) {
+          console.log(loginForm);
            var userobj = {
                email: $scope.login.email,
                senha: $scope.login.senha

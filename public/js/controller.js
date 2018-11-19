@@ -1,8 +1,10 @@
 angular.module("estagioApp").controller('globalController', ["$scope", 'userModel', function ($scope, userModel) {
     $scope.user = userModel.getUserObject();
     if($scope.user)
-        $scope.userAcess = $scope.user.data.acesso_idacesso;
     $scope.templates = {};
+    $scope.user = userModel.getUserObject();
+    if($scope.user)
+		$scope.userAcess = $scope.user.data.acesso_idacesso;
     $scope.templates.navUrl = "view/common/navbar.html";
     $scope.templates.alnUrl = "view/common/navbarAluno.html";
     $scope.templates.supUrl = "view/common/navbarSup.html";
@@ -11,6 +13,7 @@ angular.module("estagioApp").controller('globalController', ["$scope", 'userMode
 angular.module("estagioApp").controller('userController', ['$scope', 'userModel', '$cookies', '$location', function ($scope, userModel, $cookies, $location){
     angular.extend($scope,{
        doLogin: function (loginForm) {
+          console.log(loginForm);
            var userobj = {
                email: $scope.login.email,
                senha: $scope.login.senha
