@@ -2,6 +2,7 @@ angular.module("estagioApp").controller('userController', ['$scope', 'userModel'
 
     angular.extend($scope,{
        doLogin: function (loginForm) {
+          console.log(loginForm);
            var userobj = {
                email: $scope.login.email,
                senha: $scope.login.senha

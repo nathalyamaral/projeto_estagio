@@ -2,12 +2,7 @@ angular.module("estagioApp").config(
     function ($routeProvider, $locationProvider){
         $routeProvider.when('/',{
             templateUrl: 'view/common/home.html',
-            controller: 'userController',
-            resolve: {
-                lista : function (usersApi) {
-                    return usersApi.getArray();
-                }
-            }
+            controller: 'userController'
         });
 
         $routeProvider.when('/login',{
