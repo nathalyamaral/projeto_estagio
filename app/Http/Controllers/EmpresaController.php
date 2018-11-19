@@ -38,8 +38,6 @@ class EmpresaController extends Controller
         }
         $empresaOne = Empresa::ler($id,$variable);
         return response()->json($empresaOne); 
-    }
-
     /**
      * Update the specified resource in storage.
      *

@@ -1,0 +1,20 @@
+<div ng-include="'view/common/navbar.html'"></div>
+<h1 id="sig"> Bem-vindo ao Sigest </h1>
+<br>
+<div class="loginmodal-container">
+    <h1>Login</h1><br>
+    <form name="loginForm" ng-submit="doLogin(loginForm)">
+        <div class="form-group">
+            <input type="email" name="user" placeholder="E-mail" ng-model="login.email" required class="form-control" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <input type="password" name="pass" placeholder="Senha" ng-model="login.senha" required class="form-control">
+        </div>
+        <input type="submit" name="Confirmar" class="btn btn-primary btn-block">
+
+    </form>
+
+    <div class="login-help">
+        <a href="#">Cadastrar-se</a> | <a href="#">Esqueceu a senha?</a>
+    </div>
+</div>

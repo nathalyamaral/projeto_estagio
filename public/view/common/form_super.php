@@ -1,0 +1,90 @@
+<?php
+	require_once('functions.php');
+?>
+
+	<div class="container">
+	   	<br />
+	   	<div class="col-md-2"></div>
+
+	   	<div class="col-md-7">
+	   		<h3 class="page-header">Cadastro Supervisor</h3>
+
+	   		<?php
+	   			include_once('bd.class.php');
+	   			$objBd = new bd();
+				$link = $objBd->conecta_mysql();
+	   		?>
+
+	   		<form method="post" action="form_super.php" id="formCadastrarse">
+				<div class="form-group">
+	            	<label for="cargo" class="control-label">Cargo <span style="color: red">*</span></label>
+					<input type="text" class="form-control" id="cargo" name="cargo" required="requiored">
+				</div>
+
+				<div class="form-group">
+					<label for="area" class="control-label">Area Atuação <span style="color: red">*</span></label>
+					<input type="text" class="form-control" id="area" name="area" required>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="cpf" class="control-label">CPF <span style="color: red">*</span></label><br />
+						<select name="cpf" id="cpf" required>
+							<option value="">Selecione...</option>
+							<?php
+								$result_cpf = "SELECT * FROM users ORDER BY cpf";
+								$resultado_cpf = mysqli_query($link, $result_cpf);
+								while($row_cpf = mysqli_fetch_assoc($resultado_empresa)){
+									echo '<option value="'.$row_cpf['cpf'].'">'.$row_cpf['nome'].'</option>';
+								}
+							?>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="cnpj" class="control-label">Empresa <span style="color: red">*</span></label><br />
+						<select name="cnpj" id="cnpj" required>
+							<option value="">Selecione...</option>
+							<?php
+								$result_empresa = "SELECT * FROM empresa ORDER BY cnpj";
+								$resultado_empresa = mysqli_query($link, $result_empresa);
+								while($row_empresa = mysqli_fetch_assoc($resultado_empresa)){
+									echo '<option value="'.$row_empresa['cnpj'].'">'.$row_empresa['nome'].'</option>';
+								}
+							?>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="idestagio" class="control-label">Estagio a Supervisionar <span style="color: red">*</span></label><br />
+						<select name="idestagio" id="idestagio" required>
+							<option value="">Selecione...</option>
+							<?php
+								$result_estagio = "SELECT * FROM estagio ORDER BY idestagio";
+								$resultado_estagio = mysqli_query($link, $result_estagio);
+								while($row_estagio = mysqli_fetch_assoc($resultado_estagio)){
+									echo '<option value="'.$row_estagio['idestagio'].'">'.$row_estagio['idestagio'].'</option>';
+								}
+							?>
+						</select>
+					</div>
+
+				</div>
+				<br />
+				<button type="submit" class="btn btn-primary form-control" name="submit">Cadastrar</button>
+	    	</form>
+	    </div>
+	</div>
+
+	<?php 
+		if(isset($_POST['submit'])){
+			registraSuper();
+		}
+	?>
+

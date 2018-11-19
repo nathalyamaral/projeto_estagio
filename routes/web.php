@@ -11,8 +11,18 @@
 |
 */
 
+Route::group(['prefix'=> 'api', 'middleware' => 'CheckConsistence'], function (){
+
+    Route::get('/getArray', 'UserController@getArray');
+    Route::get('/getVagas',  'VagasController@index');
+    Route::post('/auth','UserController@CheckAuth');
+    Route::resource('/Aluno', 'AlunoController');
+});
+
 Route::get('/', function () {
     return view('master');
 });
 
-Route::get('/getArray', 'UserController@getArray');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

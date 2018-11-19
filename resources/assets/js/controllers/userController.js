@@ -1,11 +1,33 @@
-angular.module("estagioApp").controller('userController', ['$scope', '$http', 'usersApi', function ($scope, $http, lista){
-//["msg"];
-    lista.getArray().then(function (response) {
-        $scope.api = response.data;
-    });
+angular.module("estagioApp").controller('userController', ['$scope', 'userModel', '$cookies', '$location', function ($scope, userModel, $cookies, $location){
 
-$scope.msg = "Ola";
+    angular.extend($scope,{
+       doLogin: function (loginForm) {
+           var userobj = {
+               email: $scope.login.email,
+               senha: $scope.login.senha
+           };
+           userModel.doLogin(userobj).then(function (succesresponse) {
+               $location.path('dashboard');
+           });
+       }
+    });
 }]);
 angular.module('estagioApp').controller('otherController', ['$scope', '$http', function ($scope, $http){
     $scope.msg = "Ola Muchacho";
+    // language=HTML
+    $scope.contato = "Dúvidas, comentários ou elogios, envie um e-mail para:wesley.barbosa@aluno.ufms.br";
+    $scope.sobre = "Plataforma de estágio para auxiliar você!";
+}]);
+
+angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$location', 'userModel', function ($scope, $http, $location, userModel){
+    $scope.msg = "Ola Muchacho";
+    // language=HTML
+    $scope.contato = "Dúvidas, comentários ou elogios, envie um e-mail para:wesley.barbosa@aluno.ufms.br";
+    $scope.sobre = "Plataforma de estágio para auxiliar você!";
+    angular.extend($scope,{
+        doLogout: function () {
+            userModel.doUserLogout();
+            $location.path('logout');
+        }
+    });
 }]);
