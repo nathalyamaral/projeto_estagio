@@ -1,4 +1,6 @@
 angular.module("estagioApp").controller('globalController', ["$scope", 'userModel', function ($scope, userModel) {
+    $scope.user = userModel.getUserObject();
+    if($scope.user)
     $scope.templates = {};
     $scope.user = userModel.getUserObject();
     if($scope.user)

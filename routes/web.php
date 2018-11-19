@@ -24,5 +24,3 @@ Route::group(['prefix'=> 'api', 'middleware' => 'CheckConsistence'], function ()
 });
 
 Route::get('/', 'CrudController@index');
-
-
