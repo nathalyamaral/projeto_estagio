@@ -12,7 +12,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create(['cpf'=>12345678901, 'rg' => 391125, 'nome'=>"Wesley", 'email'=>'wbs123@gmail.com','senha'=>bcrypt('12345'),'acesso_idacesso'=>1]);
+        User::create(['cpf'=>12345678901, 'rg' => 391125, 'nome'=>"Wesley", 'email'=>'wbs123@gmail.com','senha'=>'12345','acesso_idacesso'=>1]);
 
     }
 }

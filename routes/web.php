@@ -28,4 +28,3 @@ Route::get('/', function () {
     return view('master');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');

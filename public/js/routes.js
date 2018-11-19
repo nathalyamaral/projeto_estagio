@@ -10,6 +10,11 @@ angular.module("estagioApp").config(
             controller: 'userController'
         });
 
+        $routeProvider.when('/cadastro',{
+            templateUrl: 'view/forms/cadastroForm.html',
+            controller: 'userController'
+        });
+
         $routeProvider.when('/vagas',{
             templateUrl: 'view/users/vagas.html',
             controller: 'vagasController',
