@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 09 Nov 2018 16:25:57 +0000.
+ * Date: Thu, 08 Nov 2018 20:06:16 +0000.
  */
 
 namespace App\Models;
@@ -69,5 +69,8 @@ class Endereco extends Eloquent
 	public function instituicaos()
 	{
 		return $this->hasMany(\App\Models\Instituicao::class, 'endereco_idendereco');
+	}
+	public function insert($rua,$numero,$cidade,$cep,$estado,$complemento){
+		return $this->firstOrCreate(['rua' => $rua,'numero'=>$numero,'cidade'=>$numero,'cidade'=>$cidade,'cep'=>$cep,'estado'=>$estado,'complemento'=>$complemento],['rua' => $rua,'numero'=>$numero,'cidade'=>$numero,'cidade'=>$cidade,'cep'=>$cep,'estado'=>$estado,'complemento'=>$complemento]);
 	}
 }

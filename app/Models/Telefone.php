@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 09 Nov 2018 16:25:57 +0000.
+ * Date: Thu, 08 Nov 2018 20:06:17 +0000.
  */
 
 namespace App\Models;
@@ -30,6 +30,9 @@ class Telefone extends Eloquent
 	protected $primaryKey = 'telefone';
 	public $incrementing = false;
 
+	protected $fillable = [
+		'telefone'
+	];
 	public function alunos()
 	{
 		return $this->belongsToMany(\App\Models\Aluno::class, 'aluno_has_telefone', 'telefone_telefone', 'Aluno_rga')
@@ -47,5 +50,8 @@ class Telefone extends Eloquent
 		return $this->belongsToMany(\App\Models\Empresa::class, 'telefone_has_empresa', 'telefone_telefone', 'empresa_cnpj')
 					->withPivot('deleted_at')
 					->withTimestamps();
+	}
+	public function insert($telefone){
+		return $this->firstOrCreate(['telefone'=>$telefone],['telefone'=>$telefone]);
 	}
 }
