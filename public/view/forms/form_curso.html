@@ -1,0 +1,41 @@
+<div ng-include="'view/common/navbar.html'"></div>
+	<div class="container">
+	   	<br />
+	   	<div class="col-md-2"></div>
+
+	   	<div class="col-md-7">
+	   		<h3 class="page-header">Cadastro Curso</h3>
+
+	   		<form name="form_curso" ng-submit="doCurso(form_curso)">
+				<div class="form-group">
+	            	<label for="nome" class="control-label">Nome Curso <span style="color: red">*</span></label>
+					<input type="text" class="form-control" id="nome" ng-model="curso.nome" name="nome" required="requiored">
+				</div>
+
+				<!---<div class="row">
+					<div class="form-group col-md-6">
+						<label for="campus" class="control-label">Campus
+							<option value="">Selecio		ne...</option>
+							<?php
+								$result_campus = "SELECT * FROM campus ORDER BY nome";
+								$resultado_campus = mysqli_query($link, $result_campus);
+								while($row_campus = mysqli_fetch_assoc($resultado_campus)){
+									echo '<option value="'.$row_campus['nome'].'">'.$row_campus['nome'].'</option>';
+								}
+							?>
+						</select>
+					</div>
+				</div> --->
+
+				<div class="form-group">
+					<label for="regulamento" class="control-label">Regulamento<span style="color: red">*</span></label>
+					<input type="text" class="form-control" id="regulamento" ng-model="curso.regulamento" name="regulamento" required>
+				</div>
+
+				<br />
+				<button type="submit" class="btn btn-primary form-control" name="submit">Cadastrar</button>
+	    	</form>
+	    </div>
+	</div>
+
+

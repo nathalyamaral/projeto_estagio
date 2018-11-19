@@ -55,4 +55,9 @@ class Campus extends Eloquent
 	{
 		return $this->hasMany(\App\Models\Endereco::class, 'Campus_nome');
 	}
+
+	public static function inserir($request){
+        $campus=self::firstOrCreate(['nome'=> $request['nome'] ],['nome'=> $request['nome'], 'diretor'=> $request['diretor'],'emailDirecao'=> $request['emailDirecao'], 'site' => $request['site'], 'Instituicao_CNPJ' =>['Instituicao_CNPJ'] ]);
+        return 200;
+	}
 }
