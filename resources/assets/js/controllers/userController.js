@@ -21,11 +21,19 @@ angular.module("estagioApp").controller('userController', ['$scope', 'userModel'
                 email: $scope.campus.emailDirecao,
                 site: $scope.campus.site
             };
-            userModel.doLogin(userobj).then(function (succesresponse) {
+            userModel.doCampus(userobj).then(function (succesresponse) {
                 $location.path('dashboard');
             });
         }
     });
+    angular.extend($scope,{
+        doCurso: function (form_cursco) {
+          var userobj = {
+            nome: $scope.curso.nome,
+            regulamento: $scope.curso.regulamento
+          }
+        }
+    })
 }]);
 angular.module('estagioApp').controller('otherController', ['$scope', '$http', function ($scope, $http){
     $scope.msg = "Ola Muchacho";
