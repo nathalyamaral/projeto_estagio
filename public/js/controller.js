@@ -9,9 +9,10 @@ angular.module("estagioApp").controller('globalController', ["$scope", 'userMode
     $scope.templates.crdUrl = "view/common/navbarCoord.html";
 }]);
 angular.module("estagioApp").controller('userController', ['$scope', 'userModel', '$cookies', '$location', function ($scope, userModel, $cookies, $location){
+    if(userModel.getAuthStatus())
+        $location.path('dashboard');
     angular.extend($scope,{
        doLogin: function (loginForm) {
-          console.log(loginForm);
            var userobj = {
                email: $scope.login.email,
                senha: $scope.login.senha
@@ -37,7 +38,7 @@ angular.module("estagioApp").controller('userController', ['$scope', 'userModel'
         }
     });
     angular.extend($scope,{
-        doCurso: function (form_cursco) {
+        doCurso: function (form_curso) {
           var userobj = {
             nome: $scope.curso.nome,
             regulamento: $scope.curso.regulamento
