@@ -13,7 +13,7 @@ class UserController extends Controller{
     }
 
     public function CheckAuth(Request $request, User $user){
-        $user = User::with('acesso_idacesso')->get();
+        $user = User::get();
         foreach ($user as $usr){
             if ($usr['email'] == $request->input('email') and $usr['senha'] == $request->input('senha')){
                 return response($usr,201);
