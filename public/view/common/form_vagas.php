@@ -42,7 +42,7 @@
 									echo '<option value="'.$row_estagio['idsupervisor'].'">'.$row_supervisor['users_cpf'].'</option>';
 								}
 							?>
-						</select>
+						</label>
 					</div>
 				</div>
 

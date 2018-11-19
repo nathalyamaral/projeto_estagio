@@ -14,7 +14,7 @@ elixir(function (mix){
     mix.scripts([
         'services/routes.js'
     ], 'public/js/routes.js');
-
+    
     mix.scripts([
         'controllers/globalController.js',
         'controllers/userController.js',
