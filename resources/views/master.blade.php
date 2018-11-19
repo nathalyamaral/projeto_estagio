@@ -24,6 +24,12 @@
     <body>
 
     <div class="container-fluid" ng-controller="globalController">
+        <div ng-switch on="userAcess">
+            <div  ng-switch-when="1"><div ng-include="'view/common/navbarCoord.html'"></div></div>
+            <div  ng-switch-when="2"><div ng-include="'view/common/navbarAluno.html'"></div></div>
+            <div  ng-switch-when="3"><div ng-include="'view/common/navbarSup.html'"></div></div>
+            <div ng-switch-default><div ng-include="'view/common/navbar.html'"></div></div>
+        </div>
         <div ng-view></div>
     </div>
 

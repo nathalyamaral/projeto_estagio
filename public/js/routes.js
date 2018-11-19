@@ -18,6 +18,7 @@ angular.module("estagioApp").config(
         $routeProvider.when('/vagas',{
             templateUrl: 'view/users/vagas.html',
             controller: 'vagasController',
+            authenticated: true,
             resolve: {
                 dbVagas : function (usersApi) {
                     return usersApi.getArray();
