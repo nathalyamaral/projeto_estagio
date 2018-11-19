@@ -1,4 +1,16 @@
-<div  style="margin-top: 10%" class="container">
-    <p>Oie nas vagas</p>
-    <p>{{msg}}</p>
+<div id="vagas" class="container">
+    <h1> Aqui estão nossas vagas para você!</h1>
+        <div class="col-lg-8 col-md-10 mx-auto" ng-repeat="vaga in vagasList">
+            <div class="post-preview">
+                    <h2 class="post-title">
+                        {{vaga.Titulo}}
+                    </h2>
+                    <h3 class="post-subtitle">
+                        Area: {{vaga.Area}}
+                    </h3>
+                <p class="post-meta">Requisitos para a vaga:
+                    {{vaga.Requisitos_para_Vaga}}<br>
+                    postado em: {{vaga.created_at != null ? vaga.created_at:date | date:'dd-MM-yyyy'}}</p>
+            </div>
+    </div>
 </div>

@@ -10,19 +10,19 @@ angular.module("estagioApp").config(
             }
         });
 
-        $routeProvider.when('/dashboard',{
-            templateUrl: 'view/users/dashboard.html',
-            controller: 'userController',
-            resolve: {
-                lista : function (usersApi) {
-                    return usersApi.getArray();
-                }
-            }
+        $routeProvider.when('/login',{
+            templateUrl: 'view/forms/loginForm.html',
+            controller: 'userController'
         });
 
         $routeProvider.when('/vagas',{
             templateUrl: 'view/users/vagas.html',
-            controller: 'otherController'
+            controller: 'vagasController',
+            resolve: {
+                dbVagas : function (usersApi) {
+                    return usersApi.getArray();
+                }
+            }
         });
 
         $routeProvider.when('/sobre',{
@@ -35,6 +35,38 @@ angular.module("estagioApp").config(
             controller: 'otherController'
         });
 
-        $routeProvider.otherwise('/');
+        $routeProvider.when('/dashboard',{
+           templateUrl: 'view/users/dashboard.html',
+           controller: 'dashboardCtrl',
+            authenticated: true
+        });
+
+        $routeProvider.when('/logout',{
+            templateUrl: 'view/users/logout.html',
+            controller: 'userController',
+            authenticated: true
+        });
+
+        $routeProvider.otherwise({
+            redirectTo: "/"
+        });
     });
+angular.module('estagioApp').run(['$rootScope', '$location', 'userModel',
+    function ($rootScope, $location, userModel) {
+        $rootScope.$on("$routeChangeStart",
+            function (event, next, current) {
+                if(next.$$route.authenticated){
+                    if(!userModel.getAuthStatus()){
+                        $location.path('/');
+                    }
+                }
+               if(next.$$route.originalPath == '/'){
+                   console.log('Login Page');
+                   if(userModel.getAuthStatus()){
+                       $location.path(current.$$route.originalPath);
+                   }
+               }
+            });
+    }
+]);
 //# sourceMappingURL=routes.js.map
