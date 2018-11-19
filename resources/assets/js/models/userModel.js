@@ -15,7 +15,8 @@ angular.module('estagioApp')
             }).then(function (succesResponse) {
                 $cookies.put('auth', JSON.stringify(succesResponse));
             }, function (error) {
-                alert(error.status===403? "Usuário ou senha Incorretos!":"Ocorreu um erro interno! Lamentamos o ocorrido. Tente novamente mais tarde.");
+                console.log(error);
+                alert(error.data);
             });
         };
 

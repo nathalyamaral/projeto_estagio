@@ -1,10 +1,8 @@
 angular.module("estagioApp").controller('globalController', ["$scope", 'userModel', function ($scope, userModel) {
     $scope.user = userModel.getUserObject();
     if($scope.user)
-    $scope.templates = {};
-    $scope.user = userModel.getUserObject();
-    if($scope.user)
 		$scope.userAcess = $scope.user.data.acesso_idacesso;
+    $scope.templates = {};
     $scope.templates.navUrl = "view/common/navbar.html";
     $scope.templates.alnUrl = "view/common/navbarAluno.html";
     $scope.templates.supUrl = "view/common/navbarSup.html";
@@ -33,11 +31,19 @@ angular.module("estagioApp").controller('userController', ['$scope', 'userModel'
                 email: $scope.campus.emailDirecao,
                 site: $scope.campus.site
             };
-            userModel.doLogin(userobj).then(function (succesresponse) {
+            userModel.doCampus(userobj).then(function (succesresponse) {
                 $location.path('dashboard');
             });
         }
     });
+    angular.extend($scope,{
+        doCurso: function (form_cursco) {
+          var userobj = {
+            nome: $scope.curso.nome,
+            regulamento: $scope.curso.regulamento
+          }
+        }
+    })
 }]);
 angular.module('estagioApp').controller('otherController', ['$scope', '$http', function ($scope, $http){
     $scope.msg = "Ola Muchacho";
