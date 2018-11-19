@@ -1,0 +1,65 @@
+<?php
+	require_once('functions.php');
+?>
+
+	<div class="container">
+	   	<br />
+	   	<div class="col-md-2"></div>
+
+	   	<div class="col-md-7">
+	   		<h3 class="page-header">Cadastro Instituição</h3>
+
+	   		<?php
+	   			include_once('bd.class.php');
+	   			$objBd = new bd();
+				$link = $objBd->conecta_mysql();
+	   		?>
+
+	   		<form method="post" action="form_instituicao.php" id="form_instituicao">
+				<div class="form-group">
+	            	<label for="cpnj" class="control-label">CPNJ <span style="color: red">*</span></label>
+					<input type="text" class="form-control" id="cpnj" name="cpnj" required="requiored">
+				</div>
+
+				<div class="form-group">
+					<label for="razao" class="control-label">Razao Social <span style="color: red">*</span></label>
+					<input type="text" class="form-control" id="razao" name="razao" required>
+				</div>
+
+				<div class="form-group">
+					<label for="email" class="control-label">Email <span style="color: red">*</span></label>
+					<input type="text" class="form-control" id="email" name="email" required>
+				</div>
+
+				<div class="form-group">
+					<label class="radio-inline"><input type="radio" name="ensino" value="publico" >Publico</label>
+					<label class="radio-inline"><input type="radio" name="ensino" value="privado" >Privado</label>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="idsupervisor" class="control-label">Endereço
+							<option value="">Selecione...</option>
+							<?php
+								$result_endereco = "SELECT * FROM endereco ORDER BY idendereco";
+								$resultado_endereco = mysqli_query($link, $result_endereco);
+								while($row_endereco = mysqli_fetch_assoc($resultado_endereco)){
+									echo '<option value="'.$row_endereco['idendereco'].'">'.$row_endereco['rua'].'</option>';
+								}
+							?>
+						</select>
+					</div>
+				</div>
+
+				<br />
+				<button type="submit" class="btn btn-primary form-control" name="submit">Cadastrar</button>
+	    	</form>
+	    </div>
+	</div>
+
+	<?php 
+		if(isset($_POST['submit'])){
+			registraInstituicao();
+		}
+	?>
+

@@ -13,7 +13,6 @@
 			$cnpj = $_POST['cnpj'];
 			$idestagio = $_POST['idestagio'];
 		
-
 			$sql = "INSERT INTO supervisor(empresa_cpnj, Users_cpf, cargo, area_atuacao) values ('$cnpj', '$cpf', '$cargo', '$area')";
 
 			mysqli_query($link, $sql);
@@ -94,7 +93,7 @@
 			}
 			else{
 				echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=form_vaga.php'>
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=form_estagio.php'>
 					<script type=\"text/javascript\">
 						alert(\"Não foi possível realizar o cadastro!\");
 					</script>
@@ -125,7 +124,67 @@
 			}
 			else{
 				echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=form_vaga.php'>
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=form_campus.php'>
+					<script type=\"text/javascript\">
+						alert(\"Não foi possível realizar o cadastro!\");
+					</script>
+					";
+			}
+		}
+
+		function registraInstituicao(){
+	
+			$cnpj = $_POST['cnpj'];
+			$razao = $_POST['razao'];
+			$email = $_POST['email'];
+			$ensino = $_POST['ensino'];
+			$endereco = $_POST['idendereco'];
+		
+
+			$sql = "INSERT INTO instituicao(cnpj, razao_social, email, tipoensino, endereco_idendereco) values ('$cnpj', '$razao', '$email', '$ensino', '$endereco')";
+
+			mysqli_query($link, $sql);
+
+			if($sql){
+				echo "
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=home.php'>
+					<script type=\"text/javascript\">
+						alert(\"Cadastro realizado com sucesso!\");
+					</script>
+					";
+			}
+			else{
+				echo "
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=form_campus.php'>
+					<script type=\"text/javascript\">
+						alert(\"Não foi possível realizar o cadastro!\");
+					</script>
+					";
+			}
+		}
+
+		function registraCurso(){
+	
+			$nome = $_POST['nome'];
+			$campus = $_POST['campus'];
+			$regulameto = $_POST['regulameto'];
+			
+
+			$sql = "INSERT INTO curso(nomeCurso, Campus_nome, regulamentoEstaio) values ('$nome', '$campus', '$regulameto')";
+
+			mysqli_query($link, $sql);
+
+			if($sql){
+				echo "
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=home.php'>
+					<script type=\"text/javascript\">
+						alert(\"Cadastro realizado com sucesso!\");
+					</script>
+					";
+			}
+			else{
+				echo "
+					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=form_campus.php'>
 					<script type=\"text/javascript\">
 						alert(\"Não foi possível realizar o cadastro!\");
 					</script>
