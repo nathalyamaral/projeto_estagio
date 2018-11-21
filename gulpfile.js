@@ -29,6 +29,9 @@ elixir(function (mix){
         'models/userModel.js'
     ], 'public/js/models/userM.js');
 
+    mix.scripts([
+        'controllers/solicitaController.js'
+    ], 'public/js/solicitaController.js');
 
     mix.scripts([
         'services/usersApiService.js'

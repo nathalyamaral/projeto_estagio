@@ -18,7 +18,7 @@
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
-
+        <script> var baseUrl = "{{url('/')}}/" </script>
 
     </head>
     <body>
@@ -46,6 +46,6 @@
     <script type="text/javascript" src="{{asset('js/routes.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/blog.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/models/userM.js')}}"></script>
-
+    <script type="text/javascript" src="{{asset('js/solicitaController.js')}}"></script>
     </body>
 </html>

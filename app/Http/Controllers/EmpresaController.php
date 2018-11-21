@@ -32,12 +32,8 @@ class EmpresaController extends Controller
      */
     public function show($id,$variable)
     {
-        if ($id == null) {
-            $empresa = Empresa::all();
-            return response()->json($empresa);       
-        }
-        $empresaOne = Empresa::ler($id,$variable);
-        return response()->json($empresaOne); 
+        $empresa = Empresa::ler($id,$variable);
+        return response()->json($empresa); 
     /**
      * Update the specified resource in storage.
      *

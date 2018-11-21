@@ -12,5 +12,8 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
     this.getAuth = function () {
         return $http.get(config.baseUrl +'/api/auth');
     }
+    this.getSolicita= function(){
+        return $http.get(config.baseUrl +'/api/solicitacao');
+    }
 
 });

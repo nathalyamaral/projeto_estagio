@@ -19,7 +19,7 @@ angular.module("estagioApp").controller('userController', ['$scope', 'userModel'
            };
            userModel.doLogin(userobj).then(function (succesresponse) {
                $location.path('dashboard');
-           }, function (error) {
+           }).then(function (error) {
                console.log(error);
            });
        }
@@ -46,6 +46,7 @@ angular.module("estagioApp").controller('userController', ['$scope', 'userModel'
         }
     })
 }]);
+
 angular.module('estagioApp').controller('otherController', ['$scope', '$http', function ($scope, $http){
     $scope.msg = "Ola Muchacho";
     // language=HTML
@@ -69,6 +70,19 @@ angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$l
     });
 }]);
 
+
+angular.module("estagioApp").controller('adminController',  ['$scope', 'adminModel', '$location', function ($scope, adminModel, $location){
+    angular.extend($scope,{
+        doCadCoor: function (CadCoorForm){
+            var CadCoorData = $scope.cadastro;
+            CadCoorModel.doSolicita(CadCoorData).then(function (succesresponse) {
+                $location.path('dashboard');
+            }).then(function (error) {
+                console.log(error);
+            });
+       }
+    });
+}]);
 angular.module("estagioApp").controller('navController', ['$scope', 'userModel', function ($scope, userModel) {
     angular.extend($scope, {
        user: userModel.getUserObject(),

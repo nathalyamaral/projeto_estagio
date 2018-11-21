@@ -13,13 +13,14 @@ class UserController extends Controller{
     }
 
     public function CheckAuth(Request $request, User $user){
-        $user = User::get();
+        $user = User::all();
         foreach ($user as $usr){
             if ($usr['email'] == $request->input('email') and $usr['senha'] == $request->input('senha')){
                 return response($usr,201);
             }
         }
         return response('Username or Password does not match', 403);
+        
     }
 
 }
