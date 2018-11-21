@@ -11,17 +11,25 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a class="nav-link" href="#!/dashboard">Painel inicial</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#!/vagas">Vagas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/sobre">Estágio</a>
-
+                    <div id="dropdown">
+                        <a id="dropbtn" class="nav-link" href="#!/estagio">Estágio</a>
+                        <div class="dropdown-content">
+                            <a class="nav-link" href="#!/atividades">Atividades</a>
+                            <a class="nav-link" href="#!/frequencia">Frequências</a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!/contato">Atividades e Frequências</a>
+                    <a class="nav-link" href="#!/msg">Mensagens</a>
                 </li>
-                <li>
-                    <button class="btn btn-primary" ng-click="doLogout()">Logout</button>
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="doLogout()">Logout</a>
                 </li>
             </ul>
         </div>

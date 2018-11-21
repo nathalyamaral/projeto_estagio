@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vaga;
+use Illuminate\Support\Facades\DB;
 
 class VagasController extends Controller{
     /**
@@ -34,7 +35,9 @@ class VagasController extends Controller{
      */
     public function store(Request $request)
     {
-        //
+        $data =  (string) $request->input('info');
+        list($type, $id, $cpf) = explode("|", $data);
+        return (string) DB::table('solicitacoes')->insert(['user_cpf'=>$cpf, 'descSolicitacao'=>$type." id=".$id]);
     }
 
     /**
