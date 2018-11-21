@@ -19,7 +19,7 @@ angular.module("estagioApp").controller('userController', ['$scope', 'userModel'
            };
            userModel.doLogin(userobj).then(function (succesresponse) {
                $location.path('dashboard');
-           }, function (error) {
+           },function (error) {
                console.log(error);
            });
        }
@@ -34,18 +34,26 @@ angular.module("estagioApp").controller('userController', ['$scope', 'userModel'
             };
             userModel.doCampus(userobj).then(function (succesresponse) {
                 $location.path('dashboard');
+            }, function (error) {
+                console.log(error);
             });
         }
     });
     angular.extend($scope,{
         doCurso: function (form_curso) {
-          var userobj = {
-            nome: $scope.curso.nome,
-            regulamento: $scope.curso.regulamento
-          }
+            var userobj = {
+              nome: $scope.curso.nome,
+              regulamento: $scope.curso.regulamento
+            };
+            userModel.doCurso(userobj).then(function (succesresponse) {
+                $location.path('dashboard');
+            }, function (error) {
+                console.log(error);
+            });
         }
     })
 }]);
+
 angular.module('estagioApp').controller('otherController', ['$scope', '$http', function ($scope, $http){
     $scope.msg = "Ola Muchacho";
     // language=HTML
@@ -69,6 +77,36 @@ angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$l
     });
 }]);
 
+
+angular.module("estagioApp").controller('adminController',  ['$scope', 'adminModel', '$location', function ($scope, adminModel, $location){
+    angular.extend($scope,{
+        doCadCoor: function (CadCoorForm){
+            var CadCoorData = $scope.cadastro;
+            CadCoorModel.doSolicita(CadCoorData).then(function (succesresponse) {
+                $location.path('dashboard');
+            }).then(function (error) {
+                console.log(error);
+            });
+       }
+        /*doCoordenador: function (coordForm) {
+            var userobj = {
+                siap: $scope.coordenador.siap,
+                cargo: $scope.coordenador.cargo,
+                cpf: $scope.users.cpf,
+                rg: $scope.users.rg,
+                nome: $scope.users.nome,
+                email: $scope.users.email,
+                senha: $scope.users.senha,
+                acesso: $scope.users.acesso_idacesso
+            };
+            userModel.doCoordenador(userobj).then(function (succesresponse) {
+                $location.path('dashboard');
+            }).then(function (error) {
+                console.log(error);
+            });
+        } */
+    });
+}]);
 angular.module("estagioApp").controller('navController', ['$scope', 'userModel', function ($scope, userModel) {
     angular.extend($scope, {
        user: userModel.getUserObject(),

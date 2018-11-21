@@ -51,6 +51,7 @@ class Campus extends Eloquent
 		return $this->hasMany(\App\Models\Curso::class, 'Campus_nome');
 	}
 
+	
 	public function enderecos()
 	{
 		return $this->hasMany(\App\Models\Endereco::class, 'Campus_nome');

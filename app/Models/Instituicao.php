@@ -32,6 +32,7 @@ class Instituicao extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'instituicao';
+	protected $primaryKey = 'Instituicao_CNPJ';
 	public $incrementing = false;
 
 	protected $casts = [
@@ -39,10 +40,12 @@ class Instituicao extends Eloquent
 	];
 
 	protected $fillable = [
+		'Instituicao_CNPJ',
 		'Razao_Social',
-		'email',
+		'emailDirecao',
 		'site',
-		'tipoEnsino'
+		'tipoEnsino',
+		'endereco_idendereco'
 	];
 
 	public function endereco()
@@ -58,5 +61,10 @@ class Instituicao extends Eloquent
 	public function tele_has_instis()
 	{
 		return $this->hasMany(\App\Models\TeleHasInsti::class, 'Instituicao_CNPJ');
+	}
+
+	public static function inserir($request){
+        $instituicao=self::firstOrCreate(['Instituicao_CNPJ'=> $request['cnpj'] ], ['Instituicao_CNPJ'=> $request['cnpj'], 'Razao_Social'=> $request['razao'],'emailDirecao'=> $request['email'], 'tipoEnsino' => $request['ensino'] ]);
+        return 200;
 	}
 }

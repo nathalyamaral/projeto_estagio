@@ -35,6 +35,16 @@ angular.module("estagioApp").config(
                 }
             }
         });
+        
+        $routeProvider.when('/solicita',{
+            templateUrl:'view/forms/solicitaForm.html',
+            controller:'solicitaController'
+        });
+        $routeProvider.when('/usercad',{
+            templateUrl:'view/forms/coordForm.html',
+            controller: 'adminController',
+            authenticated: true
+        });
 
         $routeProvider.when('/sobre',{
             templateUrl: 'view/users/sobre.html',

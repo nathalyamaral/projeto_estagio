@@ -110,6 +110,10 @@ class Empresa extends Eloquent
         return 200;
 	}
 	public static function ler($id,$variable){
+		if ($id == null) {
+			$empresa = self::all();
+			return $empresa;
+		}
 		if ($variable == null) {
 			$empresaOne = self::all()->where('cnpj',$id);
 		} else {

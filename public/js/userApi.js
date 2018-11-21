@@ -35,6 +35,9 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
             console.log(error);
         });
     }
+    this.getSolicita= function(){
+        return $http.get(config.baseUrl +'/api/solicitacao');
+    }
 
 });
 //# sourceMappingURL=userApi.js.map
