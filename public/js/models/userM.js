@@ -14,7 +14,7 @@ angular.module('estagioApp')
                 }
             }).then(function (succesResponse) {
                 $cookies.put('auth', JSON.stringify(succesResponse));
-            }).then(function (data, status, headers) {
+            },function (data, status, headers) {
                 console.log(data, status, headers);
                 alert(data, status, headers);
             });
@@ -87,7 +87,7 @@ angular.module('estagioApp')
                 headers:{
                     'Content-Type': 'application/json'
                 },
-                url:baseUrl +'api/coordenador',
+                url: baseUrl +'api/coordenador',
                 method: 'POST',
                 data: CadCoorData
             }).then(function(response){

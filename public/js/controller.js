@@ -19,7 +19,7 @@ angular.module("estagioApp").controller('userController', ['$scope', 'userModel'
            };
            userModel.doLogin(userobj).then(function (succesresponse) {
                $location.path('dashboard');
-           }).then(function (error) {
+           },function (error) {
                console.log(error);
            });
        }
