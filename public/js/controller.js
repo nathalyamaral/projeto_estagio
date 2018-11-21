@@ -88,7 +88,7 @@ angular.module("estagioApp").controller('adminController',  ['$scope', 'adminMod
                 console.log(error);
             });
        }
-        doCoordenador: function (coordForm) {
+        /*doCoordenador: function (coordForm) {
             var userobj = {
                 siap: $scope.coordenador.siap,
                 cargo: $scope.coordenador.cargo,
@@ -101,10 +101,10 @@ angular.module("estagioApp").controller('adminController',  ['$scope', 'adminMod
             };
             userModel.doCoordenador(userobj).then(function (succesresponse) {
                 $location.path('dashboard');
-            }, function (error) {
+            }).then(function (error) {
                 console.log(error);
             });
-        }
+        } */
     });
 }]);
 angular.module("estagioApp").controller('navController', ['$scope', 'userModel', function ($scope, userModel) {
