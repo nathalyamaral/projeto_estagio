@@ -11,11 +11,12 @@
 |
 */
 
-Route::group(['prefix'=> 'api', 'middleware' => 'CheckConsistence'], function (){
+Route::group(['prefix'=> 'api'], function (){
 
     Route::get('/getArray', 'UserController@getArray');
+    Route::post('/getArray', 'UserController@getUserModel');
     Route::get('/getVagas',  'VagasController@index');
-    Route::post('/regSolicitacao', 'VagasController@store');
+    Route::post('/regSolicitacao', 'VagasController@store ');
     Route::post('/auth','UserController@CheckAuth');
     Route::resource('/Aluno', 'AlunoController');
 	Route::get('/{name}/{id?}/{variable?}', 'CrudController@show');

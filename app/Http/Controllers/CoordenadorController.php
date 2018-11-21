@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Vaga;
-use Illuminate\Support\Facades\DB;
+use  App\Models\Coordenador;
+use App\Models\User;
 
-class VagasController extends Controller{
+class CoordenadorController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Vaga $vaga){
-        $vagas = $vaga->all();
-        return compact('vagas');
+    public function index(Coordenador $aln)
+    {
+        $allCoordenador = $aln->all();
+        return compact("allCoordenador");
     }
 
     /**
@@ -35,9 +37,8 @@ class VagasController extends Controller{
      */
     public function store(Request $request)
     {
-        $data =  (string) $request->input('info');
-        list($type, $id, $cpf) = explode("|", $data);
-        return (string) DB::table('solicitacoes')->insert(['user_cpf'=>$cpf, 'descSolicitacao'=>$type." id=".$id]);
+        $coordenador=Coordenador::inserir($request->all());
+        return response()->json($coordenador);
     }
 
     /**
@@ -48,6 +49,7 @@ class VagasController extends Controller{
      */
     public function show($id)
     {
+        //
     }
 
     /**

@@ -61,7 +61,7 @@ class EmpresaController extends Controller
     {
         if ($id != null) {
             $empresaOne = Empresa::excluir($id);
-            return response()->json($empresaOne);;       
+            return response()->json($empresaOne);
         }else{
             return '401';
         }
