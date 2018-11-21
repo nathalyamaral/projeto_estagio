@@ -15,6 +15,7 @@ Route::group(['prefix'=> 'api', 'middleware' => 'CheckConsistence'], function ()
 
     Route::get('/getArray', 'UserController@getArray');
     Route::get('/getVagas',  'VagasController@index');
+    Route::post('/regSolicitacao', 'VagasController@store');
     Route::post('/auth','UserController@CheckAuth');
     Route::resource('/Aluno', 'AlunoController');
 	Route::get('/{name}/{id?}/{variable?}', 'CrudController@show');
