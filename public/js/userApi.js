@@ -22,7 +22,18 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
             console.log(success);
         }, function (error) {
             console.log(error);
-        })
+        });
+    };
+
+    this.getEstagioOr404 = function(user, $scope){
+        return $http({
+            url: config.baseUrl + '/api/Estagio/0/'+user.rga,
+            method: 'GET'
+        }).then(function (success) {
+            $scope.estagio = success.data;
+        }, function (error) {
+            console.log(error);
+        });
     }
 
 });

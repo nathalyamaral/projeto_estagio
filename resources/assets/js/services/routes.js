@@ -15,6 +15,16 @@ angular.module("estagioApp").config(
             controller: 'userController'
         });
 
+        $routeProvider.when('/estagio',{
+            templateUrl: 'view/forms/cadastroForm.html',
+            controller: 'estagioController',
+            resolve:{
+                objEstagio : function (usersApi,userModel) {
+                    return usersApi.getEstagioOr404(userModel.getUserObject().data.aluno);
+                }
+            }
+        });
+
         $routeProvider.when('/vagas',{
             templateUrl: 'view/users/vagas.html',
             controller: 'vagasController',

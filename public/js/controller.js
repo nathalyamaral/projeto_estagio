@@ -1,7 +1,7 @@
 angular.module("estagioApp").controller('globalController', ["$scope", 'userModel', function ($scope, userModel) {
     $scope.user = userModel.getUserObject();
     if($scope.user)
-		$scope.userAcess = $scope.user.data.acesso_idacesso;
+		$scope.userAcess = $scope.user.data.user.acesso_idacesso;
     $scope.templates = {};
     $scope.templates.navUrl = "view/common/navbar.html";
     $scope.templates.alnUrl = "view/common/navbarAluno.html";
@@ -75,4 +75,7 @@ angular.module("estagioApp").controller('navController', ['$scope', 'userModel',
        navUrl: 'view/common/navbarAluno.html'
     });
 }])
+angular.module("estagioApp").controller('estagioController', ['$scope', '$http', 'userModel', 'usersApi', function ($scope, $http, userModel, usersApi, objestagio){
+            $scope.estagio =  usersApi.getEstagioOr404(userModel.getUserObject().data.aluno);
+}]);
 //# sourceMappingURL=controller.js.map

@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Vaga;
-use Illuminate\Support\Facades\DB;
+use App\Models\Estagio;
 
-class VagasController extends Controller{
+class EstagioController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Vaga $vaga){
-        $vagas = $vaga->all();
-        return compact('vagas');
+    public function index()
+    {
+        //
     }
 
     /**
@@ -35,19 +35,23 @@ class VagasController extends Controller{
      */
     public function store(Request $request)
     {
-        $data =  (string) $request->input('info');
-        list($type, $id, $cpf) = explode("|", $data);
-        return (string) DB::table('solicitacoes')->insert(['user_cpf'=>$cpf, 'descSolicitacao'=>$type." id=".$id]);
+        //
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
-    public function show($id)
+    public function show($id, $usr)
     {
+        $estagios = \App\Models\Estagio::all();
+        foreach ($estagios as $var){
+            if ($usr == $var['Aluno_rga'])
+                return $var;
+    }
+        return ['data'=>'Não tinha '.$usr.' e '.$id.' '.$estagios];
     }
 
     /**

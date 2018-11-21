@@ -18,7 +18,8 @@ elixir(function (mix){
     mix.scripts([
         'controllers/globalController.js',
         'controllers/userController.js',
-        'controllers/navController.js'
+        'controllers/navController.js',
+        'controllers/estagioController.js'
     ], 'public/js/controller.js');
 
     mix.scripts([

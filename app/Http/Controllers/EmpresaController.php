@@ -34,10 +34,11 @@ class EmpresaController extends Controller
     {
         if ($id == null) {
             $empresa = Empresa::all();
-            return response()->json($empresa);       
+            return response()->json($empresa);
         }
-        $empresaOne = Empresa::ler($id,$variable);
-        return response()->json($empresaOne); 
+        $empresaOne = Empresa::ler($id, $variable);
+        return response()->json($empresaOne);
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -65,7 +66,7 @@ class EmpresaController extends Controller
     {
         if ($id != null) {
             $empresaOne = Empresa::excluir($id);
-            return response()->json($empresaOne);;       
+            return response()->json($empresaOne);
         }else{
             return '401';
         }
