@@ -22,11 +22,18 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
             console.log(success);
         }, function (error) {
             console.log(error);
-        })
-    }
-    this.getSolicita= function(){
-        return $http.get(config.baseUrl +'/api/solicitacao');
+        });
+    };
+    this.getSolicita = function(){
+        return $http({
+            method: 'GET'
+            url: baseUrl +'api/solicitacao'
+        }).then(function(success) {
+            return success;
+        }, function (error) {
+            alert(error);
+        });
     }
 
-});
+})
 //# sourceMappingURL=userApi.js.map
