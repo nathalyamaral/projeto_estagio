@@ -78,5 +78,22 @@ angular.module("estagioApp").controller('adminController',  ['$scope', 'adminMod
                 console.log(error);
             });
        }
+        doCoordenador: function (coordForm) {
+            var userobj = {
+                siap: $scope.coordenador.siap,
+                cargo: $scope.coordenador.cargo,
+                cpf: $scope.users.cpf,
+                rg: $scope.users.rg,
+                nome: $scope.users.nome,
+                email: $scope.users.email,
+                senha: $scope.users.senha,
+                acesso: $scope.users.acesso_idacesso
+            };
+            userModel.doCoordenador(userobj).then(function (succesresponse) {
+                $location.path('dashboard');
+            }, function (error) {
+                console.log(error);
+            });
+        }
     });
 }]);

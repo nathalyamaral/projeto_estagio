@@ -29,10 +29,12 @@ class Curso extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'curso';
+	protected $primaryKey = 'nome';
 	public $incrementing = false;
 
 	protected $fillable = [
-		'regulamentoEstagio'
+		'regulamentoEstagio',
+		'Campus_nome'
 	];
 
 	public function campus()
@@ -49,4 +51,10 @@ class Curso extends Eloquent
 	{
 		return $this->hasMany(\App\Models\Coordenador::class, 'curCampnome');
 	}
+
+	public static function inserir($request){
+        $curso=self::firstOrCreate(['nome'=> $request['nome'] ],['nome'=> $request['nome'], 'regulamentoEstagio'=> $request['regulamento'], 'Campus_nome' => $request['Campus_nome']]);
+        return 200;
+	}
+
 }

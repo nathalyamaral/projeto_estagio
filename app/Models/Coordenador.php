@@ -30,6 +30,7 @@ class Coordenador extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'coordenador';
+	protected $primaryKey = 'SIAP';
 	public $incrementing = false;
 
 	protected $casts = [
@@ -37,7 +38,10 @@ class Coordenador extends Eloquent
 	];
 
 	protected $fillable = [
-		'Cargo'
+		'Cargo' => 'cargo',
+		'Users_cpf' => 'Users_cpf',
+		'curCampnome' => 'curCampnome',
+		'curNomeCur' => 'curNomeCur'
 	];
 
 	public function user()
@@ -47,6 +51,16 @@ class Coordenador extends Eloquent
 
 	public function curso()
 	{
-		return $this->belongsTo(\App\Models\Curso::class, 'curCampnome');
+		return $this->belongsTo(\App\Models\Curso::class, 'curNomeCur');
+	}
+
+	public function campus()
+	{
+		return $this->belongsTo(\App\Models\Campus::class, 'curCampnome');
+	}
+
+	public static function inserir($request){
+        $curso=self::firstOrCreate(['SIAPE'=> $request['SIAPE'] ],['SIAPE'=> $request['SIAPE'], 'Cargo'=> $request['cargo'], 'Users_cpf' => $request['Users_cpf'], 'curCampnome' => $request['curCampnome'], 'curNomeCur' => $request['curNomeCur']]);
+        return 200;
 	}
 }
