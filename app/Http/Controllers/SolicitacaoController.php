@@ -19,7 +19,7 @@ class SolicitacaoController extends Controller
         if ($solicitacao == null) {
             return response('deu ruim',405);     
          } 
-        return response($solicitacao);
+        return $solicitacao;
     }
 
     /**
@@ -31,7 +31,7 @@ class SolicitacaoController extends Controller
     public function show($id=null)
     {
         $solicitacao=Solicitacao::ler($id);
-        return response($solicitacao);
+        return $solicitacao;
     }
 
     /**
