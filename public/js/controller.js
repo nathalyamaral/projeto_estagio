@@ -1,17 +1,19 @@
 angular.module("estagioApp").controller('globalController', ["$scope", '$location', 'config', 'userModel', function ($scope, $location, config,  userModel) {
     $scope.user = userModel.getUserObject();
     if($scope.user){
-        $scope.userAcess = $scope.user.data.user.acesso_idacesso;
-        config.personalConfig = $scope.user.data.conf;
+    	config.personalConfig = $scope.user.data.conf;
     }
     $scope.templates = {};
     $scope.templates.navUrl = "view/common/navbar.html";
+    $scope.templates.admUrl = "view/common/navbarAdmin.html";
     $scope.templates.alnUrl = "view/common/navbarAluno.html";
     $scope.templates.supUrl = "view/common/navbarSup.html";
     $scope.templates.crdUrl = "view/common/navbarCoord.html";
     angular.extend($scope,{
         doLogout: function () {
             userModel.doUserLogout();
+            $scope.user = {};
+            $scope.userAcess = 0;
             $location.path('logout');
         }
     });
@@ -70,13 +72,13 @@ angular.module('estagioApp').controller('otherController', ['$scope', '$http', f
 }]);
 
 angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$location', 'userModel', 'gereUserModel', 'config', function ($scope, $http, $location, userModel,gereUserModel, config){
+    $scope.user = userModel.getUserObject();
+    $scope.userAcess = userModel.getUserObject().data.acesso_idacesso;
     $scope.msg = "Ola Muchacho";
     $scope.myconfig = config.personalConfig;
     $scope.contato = "Dúvidas, comentários ou elogios, envie um e-mail para:wesley.barbosa@aluno.ufms.br";
     $scope.sobre = "Plataforma de estágio para auxiliar você!";
-    $scope.user = userModel.getUserObject();
-    $scope.userAcess = userModel.getUserObject().data.acesso_idacesso;
-    switch ($scope.userAcess) {
+    /*switch ($scope.userAcess) {
         case 1:
 
             break;
@@ -90,7 +92,7 @@ angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$l
             break;
         default:
             $scope.cList = [];
-    }
+    }*/
 
     $scope.userData = gereUserModel.doData(userModel.getUserObject().data);
     angular.extend($scope,{
