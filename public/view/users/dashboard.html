@@ -1,16 +1,7 @@
-<div ng-switch on="userAcess">
-    <div  ng-switch-when="1"><div ng-include="'view/common/navbarAdmin.html'"></div></div>
-    <div  ng-switch-when="2"><div ng-include="'view/common/navbarCoord.html'"></div></div>
-    <div  ng-switch-when="3"><div ng-include="'view/common/navbarSup.html'"></div></div>
-    <div  ng-switch-when="4"><div ng-include="'view/common/navbarAluno.html'"></div></div>
-</div>
-<<<<<<< HEAD
-    <p>Oie no dashboard</p>
-    <p>{{user}}</p>
-=======
+<div ng-include="'view/common/commonNav.html'"></div>
 <div class="container navspaced">
     <div>
-        <p style="text-align: justify">{{user.data}}</p>
+        <p style="text-align: justify">{{user.data.user.acesso_idacesso}}</p>
+
     </div>
->>>>>>> 3d92c69411ddd19a22b04d55fa4fbd54402bd8e9
 </div>

@@ -1,0 +1,7 @@
+<div ng-switch on="user.data.user.acesso_idacesso">
+    <div  ng-switch-when="1"><div ng-include="'view/common/navbarAdmin.html'"></div></div>
+    <div  ng-switch-when="2"><div ng-include="'view/common/navbarCoord.html'"></div></div>
+    <div  ng-switch-when="3"><div ng-include="'view/common/navbarSup.html'"></div></div>
+    <div  ng-switch-when="4"><div ng-include="'view/common/navbarAluno.html'"></div></div>
+    <div ng-switch-default><div ng-include="'view/common/navbar.html'"></div></div>
+</div>

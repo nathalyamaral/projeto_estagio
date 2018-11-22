@@ -1,22 +1,19 @@
 angular.module("estagioApp").controller('globalController', ["$scope", '$location', 'config', 'userModel', function ($scope, $location, config,  userModel) {
     $scope.user = userModel.getUserObject();
-<<<<<<< HEAD
-    if($scope.user)
-		$scope.userAcess = $scope.user.data.user.acesso_idacesso;
-=======
     if($scope.user){
-        $scope.userAcess = $scope.user.data.user.acesso_idacesso;
-        config.personalConfig = $scope.user.data.conf;
+    	config.personalConfig = $scope.user.data.conf;
     }
->>>>>>> 3d92c69411ddd19a22b04d55fa4fbd54402bd8e9
     $scope.templates = {};
     $scope.templates.navUrl = "view/common/navbar.html";
+    $scope.templates.admUrl = "view/common/navbarAdmin.html";
     $scope.templates.alnUrl = "view/common/navbarAluno.html";
     $scope.templates.supUrl = "view/common/navbarSup.html";
     $scope.templates.crdUrl = "view/common/navbarCoord.html";
     angular.extend($scope,{
         doLogout: function () {
             userModel.doUserLogout();
+            $scope.user = {};
+            $scope.userAcess = 0;
             $location.path('logout');
         }
     });

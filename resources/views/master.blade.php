@@ -26,13 +26,6 @@
     <body>
 
     <div class="container-fluid" ng-controller="globalController">
-        <div ng-switch on="userAcess">
-            <div  ng-switch-when="1"><div ng-include="'view/common/navbarAdmin.html'"></div></div>
-            <div  ng-switch-when="2"><div ng-include="'view/common/navbarCoord.html'"></div></div>
-            <div  ng-switch-when="3"><div ng-include="'view/common/navbarSup.html'"></div></div>
-             <div  ng-switch-when="4"><div ng-include="'view/common/navbarAluno.html'"></div></div>
-            <div ng-switch-default><div ng-include="'view/common/navbar.html'"></div></div>
-        </div>
         <div ng-view></div>
     </div>
 
@@ -40,15 +33,15 @@
     <script type="text/javascript" src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('bower_components/angular/angular.js')}}"></script>
     <script type="text/javascript" src="{{asset('bower_components/angular-route/angular-route.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('bower_components/angular-cookies/angular-cookies.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/controller.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/vagascontroller.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bower_components/angular-cookies/angular-cookies.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/configValues.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/userApi.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/models/userM.js')}}"></script>
+     <script type="text/javascript" src="{{asset('js/controller.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/vagascontroller.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/solicitaController.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/routes.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/blog.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/models/userM.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/solicitaController.js')}}"></script>
     </body>
 </html>
