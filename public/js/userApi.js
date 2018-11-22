@@ -18,7 +18,7 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
             url: config.baseUrl + '/api/regSolicitacao',
             method: 'POST',
             data: {'info': "vaga|"+idVaga+"|"+user}
-        }).then(function (success) {
+        }).then(function (success, btn) {
             console.log(success);
         }, function (error) {
             console.log(error);
@@ -29,13 +29,9 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
         return $http({
             url: config.baseUrl + '/api/Estagio/0/'+user.rga,
             method: 'GET'
-        }).then(function (success) {
-            $scope.estagio = success.data;
-        }, function (error) {
-            console.log(error);
         });
-    }
-    this.getSolicita= function(){
+    };
+    this.getSolicita = function(){
         return $http.get(config.baseUrl +'/api/solicitacao');
     }
 
