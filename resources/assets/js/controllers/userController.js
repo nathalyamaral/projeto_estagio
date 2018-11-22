@@ -84,8 +84,8 @@ angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$l
 }]);
 
 
-angular.module("estagioApp").controller('adminController',  ['$scope', '$location', function ($scope, $location){
-/*    angular.extend($scope,{
+angular.module("estagioApp").controller('adminController',  ['$scope', '$location', 'userModel', function ($scope, $location, userModel){
+/*    
         doCadCoor: function (CadCoorForm){
             var CadCoorData = $scope.cadastro;
             CadCoorModel.doSolicita(CadCoorData).then(function (succesresponse) {
@@ -94,21 +94,8 @@ angular.module("estagioApp").controller('adminController',  ['$scope', '$locatio
                 console.log(error);/
             });
        });*/
-        /*doCoordenador: function (coordForm) {
-            var userobj = {
-                siap: $scope.coordenador.siap,
-                cargo: $scope.coordenador.cargo,
-                cpf: $scope.users.cpf,
-                rg: $scope.users.rg,
-                nome: $scope.users.nome,
-                email: $scope.users.email,
-                senha: $scope.users.senha,
-                acesso: $scope.users.acesso_idacesso
-            };
-            userModel.doCoordenador(userobj).then(function (succesresponse) {
-                $location.path('dashboard');
-            }).then(function (error) {
-                console.log(error);
-            });
-        } */
+      angular.extend($scope,{
+        doCoordenador: function (coordForm) {
+           return userModel.doCoordenador($scope.users);
+        }});
 } ] ) ;

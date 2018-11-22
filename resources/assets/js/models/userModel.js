@@ -1,5 +1,5 @@
 angular.module('estagioApp')
-.factory('userModel', ['$http', '$cookies', function ($http, $cookies) {
+.factory('userModel', ['$http', '$cookies', function ($http, $cookies, config) {
     var userModel = {};
     userModel.doLogin = function (userdata) {
            return $http({
@@ -19,6 +19,23 @@ angular.module('estagioApp')
                 alert(data, status, headers);
             });
         };
+
+    userModel.doCoordenador = function(userdata){
+        return $http({
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                url: baseUrl  + '/api/Coordenador',
+                method: 'POST',
+                data:{
+                    info: userdata
+                }
+            }).then(function (succesresponse) {
+                console.log(succesresponse);
+            },function (error) {
+                console.log(error);
+            });
+    };
 
     userModel.getAuthStatus = function () {
         var status = $cookies.get('auth');

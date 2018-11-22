@@ -38,10 +38,11 @@ class Coordenador extends Eloquent
 	];
 
 	protected $fillable = [
-		'Cargo' => 'cargo',
-		'Users_cpf' => 'Users_cpf',
-		'curCampnome' => 'curCampnome',
-		'curNomeCur' => 'curNomeCur'
+		'SIAPE',
+		'Cargo',
+		'Users_cpf',
+		'curCampnome',
+		'curNomeCur'
 	];
 
 	public function user()
@@ -60,7 +61,7 @@ class Coordenador extends Eloquent
 	}
 
 	public static function inserir($request){
-        $curso=self::firstOrCreate(['SIAPE'=> $request['SIAPE'] ],['SIAPE'=> $request['SIAPE'], 'Cargo'=> $request['cargo'], 'Users_cpf' => $request['Users_cpf'], 'curCampnome' => $request['curCampnome'], 'curNomeCur' => $request['curNomeCur']]);
-        return 200;
+        $curso=self::firstOrCreate(['SIAPE'=> $request['SIAPE'] ],['SIAPE'=> $request['SIAPE'], 'Cargo'=> $request['Cargo'], 'Users_cpf' => $request['Users_cpf'], 'curCampnome' => $request['curCampnome'], 'curNomeCur' => $request['curNomeCur']]);
+        return $curso;
 	}
 }

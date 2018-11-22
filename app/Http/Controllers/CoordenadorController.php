@@ -37,8 +37,9 @@ class CoordenadorController extends Controller
      */
     public function store(Request $request)
     {
-        $coordenador=Coordenador::inserir($request->all());
-        return response()->json($coordenador);
+        $ob =  $request->input('info');
+        $coord = ['SIAPE'=> $ob['coordenador']['siap'], 'Cargo' => $ob['coordenador']['cargo'], "Users_cpf"=> $ob['cpf'], "curCampnome" => 'novo', "curNomeCur" => 'bacana'];
+        return response()->json(Coordenador::inserir($coord));
     }
 
     /**
