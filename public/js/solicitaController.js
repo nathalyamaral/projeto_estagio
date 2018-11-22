@@ -26,7 +26,7 @@ angular.module("estagioApp").controller('solicitaController',  ['$scope','$http'
                     console.log(error);
                 });
             }else{
-
+                ;
             }
             /*console.log(solicitaData);
             $http({

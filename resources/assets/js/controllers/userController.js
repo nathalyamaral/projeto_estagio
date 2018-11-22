@@ -51,17 +51,30 @@ angular.module('estagioApp').controller('otherController', ['$scope', '$http', f
     $scope.sobre = "Plataforma de estágio para auxiliar você!";
 }]);
 
-angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$location', 'usersApi','userModel', 'gereUserModel', function ($scope, $http, $location, usersApi,userModel,gereUserModel){
-    $scope.msg = "Ola Muchacho";
-    // language=HTML
-    $scope.contato = "Dúvidas, comentários ou elogios, envie um e-mail para:wesley.barbosa@aluno.ufms.br";
-    $scope.sobre = "Plataforma de estágio para auxiliar você!";
+angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$location', 'userModel', 'gereUserModel', 'config', function ($scope, $http, $location, userModel,gereUserModel, config){
     $scope.user = userModel.getUserObject();
     $scope.userAcess = userModel.getUserObject().data.acesso_idacesso;
-    $scope.userData = usersApi.getSolicita().then(function(sucess){
-     $scope.userData = sucess;
-    });
-    console.log($scope.userData);
+    $scope.msg = "Ola Muchacho";
+    $scope.myconfig = config.personalConfig;
+    $scope.contato = "Dúvidas, comentários ou elogios, envie um e-mail para:wesley.barbosa@aluno.ufms.br";
+    $scope.sobre = "Plataforma de estágio para auxiliar você!";
+    /*switch ($scope.userAcess) {
+        case 1:
+
+            break;
+        case 2:
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        default:
+            $scope.cList = [];
+    }*/
+
+    $scope.userData = gereUserModel.doData(userModel.getUserObject().data);
     angular.extend($scope,{
         doLogout: function () {
             userModel.doUserLogout();
@@ -71,32 +84,18 @@ angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$l
 }]);
 
 
-angular.module("estagioApp").controller('adminController',  ['$scope', 'adminModel', '$location', function ($scope, adminModel, $location){
-    angular.extend($scope,{
+angular.module("estagioApp").controller('adminController',  ['$scope', '$location', 'userModel', function ($scope, $location, userModel){
+/*    
         doCadCoor: function (CadCoorForm){
             var CadCoorData = $scope.cadastro;
             CadCoorModel.doSolicita(CadCoorData).then(function (succesresponse) {
                 $location.path('dashboard');
             }).then(function (error) {
-                console.log(error);
+                console.log(error);/
             });
-       }
-        /*doCoordenador: function (coordForm) {
-            var userobj = {
-                siap: $scope.coordenador.siap,
-                cargo: $scope.coordenador.cargo,
-                cpf: $scope.users.cpf,
-                rg: $scope.users.rg,
-                nome: $scope.users.nome,
-                email: $scope.users.email,
-                senha: $scope.users.senha,
-                acesso: $scope.users.acesso_idacesso
-            };
-            userModel.doCoordenador(userobj).then(function (succesresponse) {
-                $location.path('dashboard');
-            }).then(function (error) {
-                console.log(error);
-            });
-        } */
-    });
-}]);
+       });*/
+      angular.extend($scope,{
+        doCoordenador: function (coordForm) {
+           return userModel.doCoordenador($scope.users);
+        }});
+} ] ) ;

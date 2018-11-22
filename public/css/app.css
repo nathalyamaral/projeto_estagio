@@ -43,6 +43,10 @@ blockquote {
   margin-top: 60px;
 }
 
+.margemtopo {
+  margin-top: 12% !important;
+}
+
 .caption {
   font-size: 14px;
   font-style: italic;
@@ -377,6 +381,10 @@ form .form-group:first-child .floating-label-form-group {
 
 #footer a:hover {
   color: #0085A1;
+}
+
+.navspaced {
+  margin-top: 12%;
 }
 
 /*footer .list-inline {

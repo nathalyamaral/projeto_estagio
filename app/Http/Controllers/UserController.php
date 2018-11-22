@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Configuracao;
 use App\Models\Coordenador;
 use App\Models\Supervisor;
 use Illuminate\Http\Request;
@@ -31,14 +32,16 @@ class UserController extends Controller{
         $aluno =  Aluno::where('Users_cpf', '=', $usr['cpf'])->first();
         $coord = Coordenador::where('Users_cpf', '=', $usr['cpf'])->first();
         $sup = Supervisor::where('Users_cpf', '=', $usr['cpf'])->first();
+        $config = Configuracao::where('Users_cpf', '=', $usr['cpf'])->first();
         if($aluno != null){
-            return array('aluno'=>$aluno,'user'=>$usr);
+            return array('aluno'=>$aluno,'user'=>$usr,'conf' => $config);
         }elseif($coord != null){
-            return array('coord'=>$coord,'user'=>$usr);
+            return array('coord'=>$coord,'user'=>$usr,'conf' => $config);
         }elseif ($sup != null ){
-            return array('sup'=>$sup,'user'=>$usr);
+            return array('sup'=>$sup,'user'=>$usr,'conf' => $config);
         }else{
-            return array('user'=>$usr);
+            return array('user'=>$usr,'conf' => $config);
         }
     }
+
 }

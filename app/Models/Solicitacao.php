@@ -22,7 +22,7 @@ use Illuminate\Http\Request;
 
 class Solicitacao extends Eloquent
 {
-	protected $table = 'solicitacao';
+	protected $table = 'solicitacoes';
 	protected $primaryKey = 'idsolicitacao';
 	public $timestamps = false;
 

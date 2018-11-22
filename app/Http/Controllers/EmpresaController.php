@@ -32,9 +32,8 @@ class EmpresaController extends Controller
      */
     public function show($id,$variable)
     {
-        $empresa = Empresa::ler($id,$variable);
-        return response()->json($empresa); 
-    }
+        $empresa = Empresa::ler($id, $variable);
+        return response()->json($empresa);
     /**
      * Update the specified resource in storage.
      *

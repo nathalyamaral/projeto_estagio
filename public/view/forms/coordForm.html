@@ -1,16 +1,17 @@
-	<div class="margemtopo loginmodal-container">
+<div ng-include="'view/common/commonNav.html'"></div>
+	<div class="loginmodal-container margemtopo">
 	   		<h3>Cadastro Coordenador</h3>
 
 	   		<form name="coordForm" ng-submit="doCoordenador(coordForm)">
 
 	   			<div class="form-group">
 					<label for="siap" class="control-label"> SIAP <span style="color: red">*</span></label>
-					<input ng-model="coordenador.siap" type="text" class="form-control" id="siap" name="siap" required>
+					<input ng-model="users.coordenador.siap" type="text" class="form-control" id="siap" name="siap" required>
 				</div>
 
 				<div class="form-group">
 					<label for="cargo" class="control-label"> Cargo <span style="color: red">*</span></label>
-					<input ng-model="coordenador.cargo" type="text" class="form-control" id="cargo" name="cargo" required>
+					<input ng-model="users.coordenador.cargo" type="text" class="form-control" id="cargo" name="cargo" required>
 				</div>
 
 	   			<div class="form-group">
@@ -43,7 +44,5 @@
 				</div>
 				<button type="submit" class="btn btn-primary btn-block" name="submit">Cadastrar - Se</button>
 	    	</form>
-	    
 	</div>
-
 
