@@ -26,7 +26,7 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
     };
     this.getSolicita = function(){
         return $http({
-            method: 'GET'
+            method: 'GET',
             url: baseUrl +'api/solicitacao'
         }).then(function(success) {
             return success;
@@ -43,6 +43,36 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
             $scope.estagio = success.data;
         }, function (error) {
             console.log(error);
+        });
+    };
+    this.getInsCnpjs = function(){
+        return $http({
+            url: baseUrl + 'api/instituicao',
+            method: 'GET'
+        }).then(function (success) {
+            return success;
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    this.getInsCnpj = function(cnpj){
+        return $http({
+                url: baseUrl + 'api/instituicao/'+cnpj,
+                method: 'GET'
+            }).then(function (success) {
+                return success;
+            }, function (error) {
+                console.log(error);
+            });
+    };
+    this.getCampusInst = function(instituicao){
+        return $http({
+            method: 'GET',
+            url: baseUrl +'api/campus',
+        }).then(function(success) {
+            return success;
+        }, function (error) {
+            alert(error);
         });
     };
 })

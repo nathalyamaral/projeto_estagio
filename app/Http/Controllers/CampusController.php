@@ -30,10 +30,6 @@ class CampusController extends Controller
      */
     public function show($id,$variable)
     {
-        if ($id == null) {
-            $campus = Campus::all();
-            return response()->json($campus);       
-        }
         $campusOne = Campus::ler($id,$variable);
         return response()->json($campusOne); 
     /**

@@ -4,6 +4,12 @@
     <div  ng-switch-when="3"><div ng-include="'view/common/navbarSup.html'"></div></div>
     <div  ng-switch-when="4"><div ng-include="'view/common/navbarAluno.html'"></div></div>
 </div>
-    <p>Oie no dashboard</p>
-    <p>{{msg}}</p>
+<div>
+    <div class="margemtopo container">
+            <p ng-repeat="x in userData">{{x}}</p>
+        
+    </div>
+    
+</div>
+
 </div>

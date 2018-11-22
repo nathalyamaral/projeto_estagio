@@ -61,4 +61,13 @@ class Campus extends Eloquent
         $campus=self::firstOrCreate(['nome'=> $request['nome'] ],['nome'=> $request['nome'], 'diretor'=> $request['diretor'],'emailDirecao'=> $request['emailDirecao'], 'site' => $request['site'], 'Instituicao_CNPJ' =>['Instituicao_CNPJ'] ]);
         return 200;
 	}
+	public static function ler($id,$variable){
+		if ($id == null) {
+			return self::all();
+		}
+		if ($variable == null) {
+			return self::all()->where('nome',$id);
+		} else {
+			return self::all()->where($id,$variable);
+		}
 }

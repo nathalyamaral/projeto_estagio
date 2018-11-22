@@ -34,6 +34,7 @@ class EmpresaController extends Controller
     {
         $empresa = Empresa::ler($id,$variable);
         return response()->json($empresa); 
+    }
     /**
      * Update the specified resource in storage.
      *

@@ -1,7 +1,7 @@
 angular.module("estagioApp").controller('globalController', ["$scope", 'userModel', function ($scope, userModel) {
     $scope.user = userModel.getUserObject();
-    if($scope.user)
-		$scope.userAcess = $scope.user.data.user.acesso_idacesso;
+  //  if($scope.user)
+//		$scope.userAcess = $scope.user.data.user.acesso_idacesso;
     $scope.templates = {};
     $scope.templates.navUrl = "view/common/navbar.html";
     $scope.templates.alnUrl = "view/common/navbarAluno.html";
@@ -61,14 +61,16 @@ angular.module('estagioApp').controller('otherController', ['$scope', '$http', f
     $scope.sobre = "Plataforma de estágio para auxiliar você!";
 }]);
 
-angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$location', 'userModel', 'gereUserModel', function ($scope, $http, $location, userModel,gereUserModel){
+angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$location', 'usersApi','userModel', 'gereUserModel', function ($scope, $http, $location, usersApi,userModel,gereUserModel){
     $scope.msg = "Ola Muchacho";
     // language=HTML
     $scope.contato = "Dúvidas, comentários ou elogios, envie um e-mail para:wesley.barbosa@aluno.ufms.br";
     $scope.sobre = "Plataforma de estágio para auxiliar você!";
     $scope.user = userModel.getUserObject();
     $scope.userAcess = userModel.getUserObject().data.acesso_idacesso;
-    $scope.userData = gereUserModel.doData(userModel.getUserObject().data);
+    $scope.userData = usersApi.getSolicita().then(function(sucess){
+     $scope.userData = sucess;
+    });
     console.log($scope.userData);
     angular.extend($scope,{
         doLogout: function () {
@@ -114,4 +116,7 @@ angular.module("estagioApp").controller('navController', ['$scope', 'userModel',
        navUrl: 'view/common/navbarAluno.html'
     });
 }])
+angular.module("estagioApp").controller('estagioController', ['$scope', '$http', 'userModel', 'usersApi', function ($scope, $http, userModel, usersApi, objestagio){
+            $scope.estagio =  usersApi.getEstagioOr404(userModel.getUserObject().data.aluno);
+}]);
 //# sourceMappingURL=controller.js.map

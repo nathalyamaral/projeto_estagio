@@ -67,4 +67,18 @@ class Instituicao extends Eloquent
         $instituicao=self::firstOrCreate(['Instituicao_CNPJ'=> $request['cnpj'] ], ['Instituicao_CNPJ'=> $request['cnpj'], 'Razao_Social'=> $request['razao'],'emailDirecao'=> $request['email'], 'tipoEnsino' => $request['ensino'] ]);
         return 200;
 	}
+	public static function ler($id,$variable){
+		if ($id == null) {
+			return self::all();
+		}
+		if ($variable == null) {
+			$instituicaoOne = self::all()->where('CNPJ',$id);
+			return $instituicaoOne;
+		} else {
+			$instituicaoOne = self::all()->where($id,$variable);
+		}
+		if (empty($instuicaoOne[0])) {
+			return $instituicaoOne;
+		}
+	}
 }

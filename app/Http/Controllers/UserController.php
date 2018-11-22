@@ -38,7 +38,7 @@ class UserController extends Controller{
         }elseif ($sup != null ){
             return array('sup'=>$sup,'user'=>$usr);
         }else{
-            return $usr;
+            return array('user'=>$usr);
         }
     }
 }

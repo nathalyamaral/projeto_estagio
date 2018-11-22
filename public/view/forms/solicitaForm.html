@@ -3,28 +3,167 @@
 <div class="conteiner">    
     <br>
     <div class="row justify-content-md-center">
-        <div  class="loginmodal-container">
+        <div  class="margemtopo loginmodal-container">
         <h6 id="sig"> 
             Olá, este é um canal direto de comunicação da comunidade com a equipe responsável. Se você já tem um cadastro, utilize a ferramenta de Mensagem. 
         </h6>
                 
             <h1>Solicitação</h1><br>
-            <h6> Atualmente é permitido apenas solicitar cadastro de coordenador. Por favor informe: SIAPE, Cargo, CNPJ, Razão Social, Campus, Curso, Cpf no campo 'Informação'.</h6>
+            <h6 style="font-size: 0.8rem"> Atualmente é permitido apenas solicitar cadastro de coordenador.</h6>
             <form name="solicitaForm" ng-submit="doSolicita(solicitaForm)">
                 <div class="form-group">
-                    <select ng-model="solicitacao.razao" class="form-control" required>
+                    <select ng-model="solicitacao.razao" class="form-control" required ng-change="doAction(solicitacao.razao)">
                         <option>Duvida</option>
                         <option>Cadastro coordenador</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="nome" placeholder="Nome" ng-model="solicitacao.nome" required class="form-control">
+
+                <div id=duv style="display: contents;">
+                    <div class="form-group">
+                        <input type="text" name="nome" placeholder="Nome" ng-model="solicitacao.nome" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="E-mail" ng-model="solicitacao.email" required class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <textarea name="informacao" placeholder="Informaçao" ng-model="solicitacao.informacao" required class="form-control" rows="3"></textarea>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="E-mail" ng-model="solicitacao.email" required class="form-control" >
+                <div id = "cod" style="display: none">
+                    <div class="form-group">
+                        <input type="text" name="nome" placeholder="Nome" ng-model="solicitacao.user.nome" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                            <input type="text" name="siape" placeholder="SIAPE" ng-model="solicitacao.cod.siepe" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="cargo" placeholder="Cargo" ng-model="solicitacao.cod.cargo" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="cpf" placeholder="Cpf" ng-model="solicitacao.user.cpf" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="rg" placeholder="Rg" ng-model="solicitacao.user.rg" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="E-mail" ng-model="solicitacao.user.email" required class="form-control" >
+                        </div>
+                        <div  id="Inst" style="display: contents;">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="cpnj" ng-model="solicitacao.instituicao.CNPJ" ng-blur="DoInsExist()" name="cpnj" required="requiored" placeholder="CNPJ"  >
+                            </div>
+                            <a id="btnInst" href= "" ng-click ="doCadastroInstituicao()" style="display:none;">Sua instituição não esta cadastrada? Clique aqui!</a>
+                            <div class="form-group">
+                                <input ng-model="solicitacao.instituicao.Razao_Social" type="text" class="form-control" id="razao" name="razao" required placeholder="Razão Social">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="campus" placeholder="Campus" ng-model="solicitacao.campus.nome" required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="curso" placeholder="Curso" ng-model="solicitacao.curso.nomeCurso" required class="form-control">
+                            </div>
+                        </div>
                 </div>
-                <div class="form-group">
-                    <textarea name="informacao" placeholder="Informaçao" ng-model="solicitacao.informacao" required class="form-control" rows="3"></textarea>
+                <div id= "instituicaoCad" style="display:none;">
+                    <div class="form-group">
+                        <label for="cpnj" class="control-label">CPNJ <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="cpnj" ng-model="solicitacao.instituicao.CNPJ" name="cpnj" required="requiored" ng-blur="DoInsExist()">
+                    </div>
+                    <div class="form-group">
+                        <label for="razao" class="control-label">Razao Social <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.instituicao.Razao_Social" type="text" class="form-control" id="razao" name="razao" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="control-label">Email <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="email" ng-model="solicitacao.instituicao.email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                            <select ng-model="solicitacao.instituicao.tipoEnsino">
+                                    <option>Publico</option>
+                                    <option>Privdo</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefoneInst" class="control-label">Telefone <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.telefoneInst.telefone" type="text" class="form-control" id="telefoneInst" name="telefoneInst" required>
+                    </div>
+                    <label for="" class="control-label">Endereço</label>
+                    <div class="form-group">
+                        <label for="ruaInst" class="control-label">Rua <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoInst.rua" type="text" class="form-control" id="ruaInst" name="ruaInst" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numeroInst" class="control-label">Numero <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoInst.numero" type="text" class="form-control" id="numeroInst" name="numeroInst" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cidadeInst" class="control-label">Cidade <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoInst.cidade" type="text" class="form-control" id="cidadeInst" name="cidadeInst" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cepInst" class="control-label">CEP <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoInst.cep" type="text" class="form-control" id="cepInst" name="cepInst" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estadoInst" class="control-label">Estado <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoInst.estado" type="text" class="form-control" id="estadoInst" name="estadoInst" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complementoInst" class="control-label">Complemento <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoInst.complemento" type="text" class="form-control" id="complementoInst" name="complementoInst" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="site" class="control-label">Site <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="site" ng-model="solicitacao.instituicao.site" name="site" required>
+                    </div>                    
+                    <div class="form-group">
+                        <label for="nome" class="control-label">Campus <span style="color: red">*</span></label>
+                        <input type="text" class="forenderecoCamnome" ng-model="solicitacao.campus.nome" name="nome" required="requiored">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diretor" class="control-label">Diretor <span style="color: red">*</span></label>
+                        <input type="text" class="forenderecoCamdiretor" ng-model="solicitacao.campus.diretor"  name="diretor" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="control-label">Email Direção <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="email" ng-model="solicitacao.campus.emailDirecao"  name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefoneCam" class="control-label">Telefone <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.campus.telefone.telefone" type="text" class="form-control" id="telefoneCam" name="telefoneCam" required>
+                    </div>
+                    <label for="" class="control-label">Endereço</label>
+                    <div class="form-group">
+                        <label for="ruaCam" class="control-label">Rua <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoCam.rua" type="text" class="form-control" id="ruaCam" name="ruaCam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numeroCam" class="control-label">Numero <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoCam.numero" type="text" class="form-control" id="numeroCam" name="numeroCam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cidadeCam" class="control-label">Cidade <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoCam.cidade" type="text" class="form-control" id="cidadeCam" name="cidadeCam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cepCam" class="control-label">CEP <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoCam.cep" type="text" class="form-control" id="cepCam" name="cepCam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estadoCam" class="control-label">Estado <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoCam.estado" type="text" class="form-control" id="estadoCam" name="estadoCam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complementoCam" class="control-label">Complemento <span style="color: red">*</span></label>
+                        <input ng-model="solicitacao.enderecoCam.complemento" type="text" class="form-control" id="complementoCam" name="complementoCam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="site" class="control-label">Site <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="site" ng-model="solicitacao.campus.site" name="site" required>
+                    </div>
                 </div>
                 <input type="submit" name="Confirmar" class="btn btn-primary btn-block">
             </form>

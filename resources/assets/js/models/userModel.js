@@ -79,13 +79,10 @@ angular.module('estagioApp')
 }]);
 
 angular.module('estagioApp')
-.factory('gereUserModel',[ 'solicitaModel', 'CadCoorModel', function (solicitaModel,CadCoorModel) {
+.factory('gereUserModel',[ 'solicitaModel', 'CadCoorModel', 'usersApi', function (solicitaModel,CadCoorModel,usersApi) {
     var gereUserModel = {};
     gereUserModel.doData = function(Obj){
-        var values = solicitaModel.doGetSolicita();
-        return values.then(function(scs) {
-            return scs.data;
-        });
+        return usersApi.getSolicita();
     };
     return gereUserModel;
 }]);
