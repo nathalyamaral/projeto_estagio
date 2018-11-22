@@ -53,7 +53,7 @@ angular.module('estagioApp')
                 data: solicitaData
             }).then(function(response){
                 console.log(response);
-            }).then(function(data, status, headers) {
+            }, function(data, status, headers) {
                 console.log(data, status, headers);
             });
         };
@@ -71,11 +71,23 @@ angular.module('estagioApp')
                 data: solicitaData
             }).then(function(response){
                 console.log(response);
-            }).then(function(data, status, headers) {
+            }, function(data, status, headers) {
                 console.log(data, status, headers);
             });
     }
     return solicitaModel;
+}]);
+
+angular.module('estagioApp')
+.factory('gereUserModel',[ 'solicitaModel', 'CadCoorModel', function (solicitaModel,CadCoorModel) {
+    var gereUserModel = {};
+    gereUserModel.doData = function(Obj){
+        var values = solicitaModel.doGetSolicita();
+        return values.then(function(scs) {
+            return scs.data;
+        });
+    };
+    return gereUserModel;
 }]);
 
 angular.module('estagioApp')
@@ -92,10 +104,10 @@ angular.module('estagioApp')
                 data: CadCoorData
             }).then(function(response){
                 console.log(response);
-            }).then(function(data, status, headers) {
+            }, function(data, status, headers) {
                 console.log(data, status, headers);
             });
         };
-    return solicitaModel;
+    return CadCoorModel;
 }]);
 //# sourceMappingURL=userM.js.map

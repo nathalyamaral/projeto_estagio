@@ -4,7 +4,6 @@ angular.module("estagioApp").controller('globalController', ["$scope", '$locatio
         $scope.userAcess = $scope.user.data.user.acesso_idacesso;
         config.personalConfig = $scope.user.data.conf;
     }
-
     $scope.templates = {};
     $scope.templates.navUrl = "view/common/navbar.html";
     $scope.templates.alnUrl = "view/common/navbarAluno.html";

@@ -24,6 +24,16 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
             console.log(error);
         });
     };
+    this.getSolicita = function(){
+        return $http({
+            method: 'GET'
+            url: baseUrl +'api/solicitacao'
+        }).then(function(success) {
+            return success;
+        }, function (error) {
+            alert(error);
+        });
+    };
 
     this.getEstagioOr404 = function(user, $scope){
         return $http({
@@ -36,4 +46,5 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
     }
 
 });
+
 //# sourceMappingURL=userApi.js.map

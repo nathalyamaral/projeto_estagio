@@ -38,7 +38,7 @@ class Solicitacao extends Eloquent
 	public static function ler($id){
 		if ($id == null) {
 			$solicitacoes=self::all();
-			return [$solicitacoes, 200];
+			return $solicitacoes;
 		}
 		$solicitacao=self::find($id);
 		return [$solicitacao, 200];
