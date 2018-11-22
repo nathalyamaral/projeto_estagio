@@ -50,6 +50,12 @@ angular.module("estagioApp").config(
             controller: 'otherController'
         });
 
+        $routeProvider.when('/conf',{
+            templateUrl: 'view/common/configuracoes.html',
+            controller: 'adminController',
+            authenticated: true
+        });
+
         $routeProvider.when('/dashboard',{
            templateUrl: 'view/users/dashboard.html',
            controller: 'dashboardCtrl',
