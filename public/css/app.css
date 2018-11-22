@@ -43,6 +43,10 @@ blockquote {
   margin-top: 60px;
 }
 
+.margemtopo {
+  margin-top: 12% !important;
+}
+
 .caption {
   font-size: 14px;
   font-style: italic;

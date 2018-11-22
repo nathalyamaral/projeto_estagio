@@ -84,16 +84,16 @@ angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$l
 }]);
 
 
-angular.module("estagioApp").controller('adminController',  ['$scope', 'adminModel', '$location', function ($scope, adminModel, $location){
-    angular.extend($scope,{
+angular.module("estagioApp").controller('adminController',  ['$scope', '$location', function ($scope, $location){
+/*    angular.extend($scope,{
         doCadCoor: function (CadCoorForm){
             var CadCoorData = $scope.cadastro;
             CadCoorModel.doSolicita(CadCoorData).then(function (succesresponse) {
                 $location.path('dashboard');
             }).then(function (error) {
-                console.log(error);
+                console.log(error);/
             });
-       }
+       });*/
         /*doCoordenador: function (coordForm) {
             var userobj = {
                 siap: $scope.coordenador.siap,
@@ -111,5 +111,4 @@ angular.module("estagioApp").controller('adminController',  ['$scope', 'adminMod
                 console.log(error);
             });
         } */
-    });
-}]);
+} ] ) ;
