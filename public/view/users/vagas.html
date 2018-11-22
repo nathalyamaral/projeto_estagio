@@ -13,7 +13,7 @@
                     <p class="post-meta">Requisitos para a vaga:
                         {{vaga.Requisitos_para_Vaga}}<br>
                         postado em: {{vaga.created_at != null ? vaga.created_at:date | date:'dd-MM-yyyy'}}</p>
-                    <button id="desc" class="btn btn-primary btn-block" ng-click="insertVaga(vaga.idVagas,user.data)">Candidatar-se <br> <i id="desc1" class="fas fa-plus"></i></button>
+                    <button id="{{'btn'+$index}}" onclick="this.disabled=true;" class="btn btn-primary btn-block" ng-click="insertVaga(this.id,vaga.idVagas,user.data.user)">Candidatar-se <br> <i id="desc1" class="fas fa-plus"></i></button>
                 </div>
             </div>
             <br>

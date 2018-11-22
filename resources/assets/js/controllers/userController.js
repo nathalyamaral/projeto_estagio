@@ -51,15 +51,30 @@ angular.module('estagioApp').controller('otherController', ['$scope', '$http', f
     $scope.sobre = "Plataforma de estágio para auxiliar você!";
 }]);
 
-angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$location', 'userModel', 'gereUserModel', function ($scope, $http, $location, userModel,gereUserModel){
+angular.module('estagioApp').controller('dashboardCtrl', ['$scope', '$http', '$location', 'userModel', 'gereUserModel', 'config', function ($scope, $http, $location, userModel,gereUserModel, config){
     $scope.msg = "Ola Muchacho";
-    // language=HTML
+    $scope.myconfig = config.personalConfig;
     $scope.contato = "Dúvidas, comentários ou elogios, envie um e-mail para:wesley.barbosa@aluno.ufms.br";
     $scope.sobre = "Plataforma de estágio para auxiliar você!";
     $scope.user = userModel.getUserObject();
     $scope.userAcess = userModel.getUserObject().data.acesso_idacesso;
+    switch ($scope.userAcess) {
+        case 1:
+
+            break;
+        case 2:
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        default:
+            $scope.cList = [];
+    }
+
     $scope.userData = gereUserModel.doData(userModel.getUserObject().data);
-    console.log($scope.userData);
     angular.extend($scope,{
         doLogout: function () {
             userModel.doUserLogout();

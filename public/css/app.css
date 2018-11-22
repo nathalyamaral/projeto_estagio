@@ -379,6 +379,10 @@ form .form-group:first-child .floating-label-form-group {
   color: #0085A1;
 }
 
+.navspaced {
+  margin-top: 12%;
+}
+
 /*footer .list-inline {
   margin: 0;
   padding: 0;

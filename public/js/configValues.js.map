@@ -1,1 +1,1 @@
-{"version":3,"sources":["configValues.js"],"names":[],"mappings":"AAAA;AACA;AACA","file":"configValues.js","sourcesContent":["angular.module(\"estagioApp\").value(\"config\",{\r\n   baseUrl: 'http://localhost:8000'\r\n});"]}
+{"version":3,"sources":["configValues.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA","file":"configValues.js","sourcesContent":["angular.module(\"estagioApp\").value(\"config\",{\r\n    baseUrl: 'http://localhost:8000',\r\n    personalConfig: []\r\n});"]}
