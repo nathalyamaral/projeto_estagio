@@ -6,39 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSolicitacoesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('solicitacoes',  function (Blueprint $table) {
-            $table->increments('idSolicitacao');
-            $table->string('user_cpf');
-            $table->text('descSolicitacao');
-            $table->timestamps();
-            $table->softDeletes();
-            $table->primary('idSolicitacao');
-        });
 
-        Schema::create('user_has_solicitacoes',  function (Blueprint $table) {
-            $table->increments('idSolicitacao');
-            $table->string('Aluno_rga', 45);
-            $table->timestamps();
-        });
-
-        Schema::table('user_has_solicitacoes', function(Blueprint $table) {
-            $table->foreign('Aluno_rga')->references('cpf')->on('users');
-            $table->foreign('idSolicitacao')->references('id')->on('solicitacoes');
-        });
-
-        Schema::table('solicitacoes', function(Blueprint $table) {
-            $table->foreign('Aluno_rga')->references('cpf')->on('users');
-        });
-    }
-
-    /**
+     /**
      * Reverse the migrations.
      *
      * @return void
@@ -49,4 +18,38 @@ class CreateSolicitacoesTable extends Migration
         Schema::dropIfExists('user_has_solicitacoes');
 
     }
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('solicitacoes',  function (Blueprint $table) {
+            $table->increments('id');
+            //$table->primary('id');
+            $table->string('users_cpf', 45);
+            $table->text('descSolicitacao');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::table('solicitacoes', function(Blueprint $table) {
+            $table->foreign('users_cpf')->references('cpf')->on('users');
+        });
+
+        Schema::create('users_has_solicitacoes',  function (Blueprint $table) {
+            $table->increments('solicitacoes_idSolicitacao');
+            $table->string('users_cpf', 45);
+            $table->timestamps();
+        });
+
+        Schema::table('users_has_solicitacoes', function(Blueprint $table) {
+            $table->foreign('users_cpf')->references('cpf')->on('users');
+            $table->foreign('solicitacoes_idSolicitacao')->references('id')->on('solicitacoes');
+        });
+
+    }
+
+   
 }
