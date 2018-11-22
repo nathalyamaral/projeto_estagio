@@ -37,8 +37,7 @@ angular.module("estagioApp").config(
         });
         $routeProvider.when('/usercad',{
             templateUrl:'view/forms/coordForm.html',
-            controller: 'adminController',
-            authenticated: true
+            controller: 'adminController'
         });
 
         $routeProvider.when('/sobre',{
