@@ -70,4 +70,5 @@ class Campus extends Eloquent
 		} else {
 			return self::all()->where($id,$variable);
 		}
+	}
 }

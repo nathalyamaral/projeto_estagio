@@ -64,7 +64,17 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
     this.getCampusInst = function(instituicao){
         return $http({
             method: 'GET',
-            url: baseUrl +'api/campus',
+            url: baseUrl +'api/campus/'+instituicao,
+        }).then(function(success) {
+            return success;
+        }, function (error) {
+            alert(error);
+        });
+    };
+    this.getCursoInst = function(instituicao){
+        return $http({
+            method: 'GET',
+            url: baseUrl +'api/curso'+instituicao,
         }).then(function(success) {
             return success;
         }, function (error) {

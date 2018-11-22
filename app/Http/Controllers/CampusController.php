@@ -31,7 +31,8 @@ class CampusController extends Controller
     public function show($id,$variable)
     {
         $campusOne = Campus::ler($id,$variable);
-        return response()->json($campusOne); 
+        return response()->json($campusOne);
+    }
     /**
      * Update the specified resource in storage.
      *

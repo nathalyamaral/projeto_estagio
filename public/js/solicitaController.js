@@ -57,8 +57,10 @@ angular.module("estagioApp").controller('solicitaController',  ['$scope','$http'
                 var cnpj= $scope.solicitacao.instituicao.CNPJ;
                 console.log(cnpj);
                 usersApi.getCampusInst(cnpj).then(function(sucess){
-                    console.log(sucess);
-                    // $scope.solicitacao.campus = sucess.data[0];
+                    $scope.solicitacao.campus = sucess.data[0];
+                });
+                usersApi.getCursoInst(cnpj).then(function(sucess){
+                    $scope.solicitacao.curso = sucess.data[0];
                 });
             });
         }
