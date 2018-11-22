@@ -1,4 +1,4 @@
-angular.module("estagioApp").controller('solicitaController',  ['$scope','$http', 'solicitaModel', '$location', function ($scope, $http, solicitaModel, $location){
+angular.module("estagioApp").controller('solicitaController',  ['$scope','$http', '$location','solicitaModel', function ($scope, $http, $location, solicitaModel){
     angular.extend($scope,{
         doSolicita: function (solicitaForm){
             var solicitaData = {

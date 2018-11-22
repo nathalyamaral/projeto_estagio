@@ -15,7 +15,7 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
 
     this.insertNewVaga = function (idVaga, user) {
         return $http({
-            url: config.baseUrl + '/api/regSolicitacao',
+            url: 'http://localhost:8000/api/regSolicitacao',
             method: 'POST',
             data: {'info': "vaga|"+idVaga+"|"+user}
         }).then(function (success) {
@@ -26,8 +26,8 @@ angular.module("estagioApp").service("usersApi", function ($http, config) {
     };
     this.getSolicita = function(){
         return $http({
-            method: 'GET'
-            url: baseUrl +'api/solicitacao'
+            method: 'GET',
+            url: 'http://localhost:8000/api/solicitacao'
         }).then(function(success) {
             return success;
         }, function (error) {

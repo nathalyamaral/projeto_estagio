@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix'=> 'api'], function (){
+Route::group(['prefix'=> 'api', 'middleware' => 'cors'], function (){
 
     Route::get('/getArray', 'UserController@getArray');
     Route::post('/getArray', 'UserController@getUserModel');

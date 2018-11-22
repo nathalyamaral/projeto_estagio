@@ -15,7 +15,7 @@ class CreateSolicitacoesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('solicitacoes');
-        Schema::dropIfExists('user_has_solicitacoes');
+        Schema::dropIfExists('users_has_solicitacoes');
 
     }
     /**
@@ -27,7 +27,6 @@ class CreateSolicitacoesTable extends Migration
     {
         Schema::create('solicitacoes',  function (Blueprint $table) {
             $table->increments('id');
-            //$table->primary('id');
             $table->string('users_cpf', 45);
             $table->text('descSolicitacao');
             $table->timestamps();

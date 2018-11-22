@@ -114,4 +114,7 @@ angular.module("estagioApp").controller('navController', ['$scope', 'userModel',
        navUrl: 'view/common/navbarAluno.html'
     });
 }])
+angular.module("estagioApp").controller('estagioController', ['$scope', '$http', 'userModel', 'usersApi', function ($scope, $http, userModel, usersApi, objestagio){
+            $scope.estagio =  usersApi.getEstagioOr404(userModel.getUserObject().data.aluno);
+}]);
 //# sourceMappingURL=controller.js.map
